@@ -7,7 +7,6 @@ import (
 )
 
 type Fingerprint struct {
-	// Define the structure based on the JSON file
 	Service string `json:"service"`
 	CNAME   string `json:"cname"`
 	Status  int    `json:"status"`
