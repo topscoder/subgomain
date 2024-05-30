@@ -38,6 +38,12 @@ func main() {
 		}
 	}
 
+	resolvers, err := utils.LoadResolvers("https://raw.githubusercontent.com/trickest/resolvers/main/resolvers.txt")
+	if err != nil {
+		fmt.Printf("Error loading resolvers: %v\n", err)
+		os.Exit(1)
+	}
+
 	// Read domains from file
 	domains, err := utils.ReadDomainsFromFile(*domainsFile)
 	if err != nil {
@@ -61,19 +67,19 @@ func main() {
 		go func() {
 			defer wg.Done()
 			for domain := range domainChan {
-				vulnerable, err := domainchecker.CheckDomain(domain, fps)
+				vulnerable, fingerprint, err := domainchecker.CheckDomain(domain, fps, resolvers)
 				if err != nil {
 					if !*silent {
-						fmt.Printf("[ERROR] [%s]: %v\n", domain, err)
+						fmt.Printf("[ERROR] %s: %v\n", domain, err)
 					}
 					continue
 				}
 
-				if vulnerable {
-					fmt.Printf("[VULNERABLE] [%s]\n", domain)
+				if vulnerable && (fingerprint.Vulnerable || fingerprint.Status == "Vulnerable") {
+					fmt.Printf("[VULNERABLE] [%v] %s \n", fingerprint.Service, domain)
 				} else {
 					if !*silent {
-						fmt.Printf("[NOT VULNERABLE] [%s]\n", domain)
+						fmt.Printf("[NOT VULNERABLE] %s\n", domain)
 					}
 				}
 			}

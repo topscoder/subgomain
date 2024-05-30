@@ -2,8 +2,10 @@ package utils
 
 import (
 	"bufio"
+	"net/http"
 	"net/url"
 	"os"
+	"strings"
 )
 
 // ReadDomainsFromFile reads domains from the specified file.
@@ -38,4 +40,23 @@ func IsValidURL(s string) bool {
 		return false
 	}
 	return true
+}
+
+// LoadResolvers loads DNS resolvers from a URL
+func LoadResolvers(url string) ([]string, error) {
+	resp, err := http.Get(url)
+	if err != nil {
+		return nil, err
+	}
+	defer resp.Body.Close()
+
+	var resolvers []string
+	scanner := bufio.NewScanner(resp.Body)
+	for scanner.Scan() {
+		resolver := strings.TrimSpace(scanner.Text())
+		if resolver != "" {
+			resolvers = append(resolvers, resolver)
+		}
+	}
+	return resolvers, scanner.Err()
 }
