@@ -16,13 +16,14 @@ func main() {
 	domainsFile := flag.String("domains", "", "The file containing the domains to be checked")
 	fingerprintsArg := flag.String("fingerprints", "", "URL or local file path to the fingerprints.json file to be used")
 	threads := flag.Int("threads", 5, "The amount of threads to be used")
+	silent := flag.Bool("silent", false, "Only print vulnerable domains")
 
 	// Parse command-line flags
 	flag.Parse()
 
 	// Check if the domains file is provided
 	if *domainsFile == "" {
-		fmt.Println("Usage: subgomain -domains <filename> [-fingerprints <url_or_local_path>] [-threads <int>]")
+		fmt.Println("Usage: subgomain -domains <filename> [-fingerprints <url_or_local_path>] [-threads <int>] [-silent]")
 		os.Exit(1)
 	}
 
@@ -62,14 +63,18 @@ func main() {
 			for domain := range domainChan {
 				vulnerable, err := domainchecker.CheckDomain(domain, fps)
 				if err != nil {
-					fmt.Printf("[ERROR] [Domain %s: %v]\n", domain, err)
+					if !*silent {
+						fmt.Printf("[ERROR] [%s]: %v\n", domain, err)
+					}
 					continue
 				}
 
 				if vulnerable {
-					fmt.Printf("[vulnerable] [%s]\n", domain)
+					fmt.Printf("[VULNERABLE] [%s]\n", domain)
 				} else {
-					fmt.Printf("[not vulnerable] [%s]\n", domain)
+					if !*silent {
+						fmt.Printf("[NOT VULNERABLE] [%s]\n", domain)
+					}
 				}
 			}
 		}()
