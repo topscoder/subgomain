@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"os"
 	"sync"
+	"time"
 
 	"github.com/topscoder/subgomain/domainchecker"
 	"github.com/topscoder/subgomain/fingerprints"
@@ -17,13 +18,14 @@ func main() {
 	fingerprintsArg := flag.String("fingerprints", "", "URL or local file path to the fingerprints.json file to be used")
 	threads := flag.Int("threads", 5, "The amount of threads to be used")
 	silent := flag.Bool("silent", false, "Only print vulnerable domains")
+	timeout := flag.Int("timeout", 2, "Timeout in seconds for HTTP requests")
 
 	// Parse command-line flags
 	flag.Parse()
 
 	// Check if the domains file is provided
 	if *domainsFile == "" {
-		fmt.Println("Usage: subgomain -domains <filename> [-fingerprints <url_or_local_path>] [-threads <int>] [-silent]")
+		fmt.Println("Usage: subgomain -domains <filename> [-fingerprints <url_or_local_path>] [-threads <int>] [-timeout <seconds>] [-silent]")
 		os.Exit(1)
 	}
 
@@ -58,6 +60,8 @@ func main() {
 	}
 	close(domainChan)
 
+	httpTimeout := time.Duration(*timeout) * time.Second
+
 	// Create a wait group to manage goroutines
 	var wg sync.WaitGroup
 
@@ -67,7 +71,7 @@ func main() {
 		go func() {
 			defer wg.Done()
 			for domain := range domainChan {
-				vulnerable, fingerprint, err := domainchecker.CheckDomain(domain, fps, resolvers)
+				vulnerable, fingerprint, err := domainchecker.CheckDomain(domain, fps, resolvers, httpTimeout)
 				if err != nil {
 					if !*silent {
 						fmt.Printf("[ERROR] %s: %v\n", domain, err)

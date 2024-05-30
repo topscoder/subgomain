@@ -21,7 +21,7 @@ func rotateResolver(resolvers []string) string {
 }
 
 // CheckDomain checks if the given domain is vulnerable based on the fingerprints.
-func CheckDomain(domain string, fingerprints []fingerprints.Fingerprint, resolvers []string) (bool, *fingerprints.Fingerprint, error) {
+func CheckDomain(domain string, fingerprints []fingerprints.Fingerprint, resolvers []string, httpTimeout time.Duration) (bool, *fingerprints.Fingerprint, error) {
 	// Create a context with a timeout
 	ctx, cancel := context.WithTimeout(context.Background(), 2*time.Second)
 	defer cancel()
@@ -51,7 +51,7 @@ func CheckDomain(domain string, fingerprints []fingerprints.Fingerprint, resolve
 
 	// Create HTTP client with timeout
 	client := &http.Client{
-		Timeout: 2 * time.Second,
+		Timeout: httpTimeout,
 	}
 
 	// Make HTTP GET request with timeout

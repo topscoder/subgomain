@@ -13,14 +13,15 @@ go install -v github.com/topscoder/subgomain@latest
 ## Usage
 
 ```bash
-subgomain [-silent] [-domains <path-to-domains-file>] [-fingerprints <url-to-fingerprints-json>] [-threads <number-of-threads>]
+subgomain -domains <filename> [-fingerprints <url_or_local_path>] [-threads <int>] [-timeout <seconds>] [-silent]
 ```
 
 ### Arguments
 
 - `-domains <path-to-domains-file>`: Specifies the path to the file containing the list of domains to check. Required.
-- `-fingerprints <url-to-fingerprints-json>` (optional): Specifies the URL to the JSON file containing fingerprints for identifying vulnerabilities. Optional. Defaults to a predefined URL.
+- `-fingerprints <url-to-fingerprints-json>` (optional): Specifies the URL or disk path to the JSON file containing fingerprints for identifying vulnerabilities. Optional. Defaults to a predefined URL.
 - `-threads <number-of-threads>` (optional, default 5): Specifies the number of concurrent threads to use for domain checking. Optional. Defaults to the number of logical CPUs.
+- `-timeout <seconds>` (optional, default 2): Specifies the HTTP timeout in seconds. Optional. Defaults to 2 seconds.
 - `-silent` (optional): If provided, only prints vulnerable domains without any additional output. Optional.
 
 ## Examples
