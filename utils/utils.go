@@ -5,6 +5,7 @@ import (
 	"os"
 )
 
+// ReadDomainsFromFile reads domains from the specified file.
 func ReadDomainsFromFile(filePath string) ([]string, error) {
 	file, err := os.Open(filePath)
 	if err != nil {

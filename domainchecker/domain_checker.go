@@ -9,13 +9,16 @@ import (
 	"github.com/topscoder/subgomain/fingerprints"
 )
 
+// CheckDomain checks if the given domain is vulnerable based on the fingerprints.
 func CheckDomain(domain string, fingerprints []fingerprints.Fingerprint) (bool, error) {
 	// Check DNS
 	cname, err := net.LookupCNAME(domain)
 	if err == nil {
 		for _, fp := range fingerprints {
-			if strings.Contains(cname, fp.CNAME) {
-				return true, nil
+			for _, cnameEntry := range fp.CNAME {
+				if strings.Contains(cname, cnameEntry) {
+					return true, nil
+				}
 			}
 		}
 	}
@@ -33,8 +36,12 @@ func CheckDomain(domain string, fingerprints []fingerprints.Fingerprint) (bool, 
 	}
 
 	for _, fp := range fingerprints {
-		if resp.StatusCode == fp.Status && strings.Contains(string(body), fp.Content) {
-			return true, nil
+		if fp.HTTPStatus != nil && resp.StatusCode == *fp.HTTPStatus {
+			for _, fingerprint := range fp.Fingerprint {
+				if strings.Contains(string(body), fingerprint) {
+					return true, nil
+				}
+			}
 		}
 	}
 
