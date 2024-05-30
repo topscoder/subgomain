@@ -47,7 +47,7 @@ func (f *Fingerprint) UnmarshalJSON(data []byte) error {
 
 // LoadFingerprints loads the fingerprints from the given URL.
 func LoadFingerprints(url string) ([]Fingerprint, error) {
-	fmt.Println("Downloading the fingerprints JSON file from " + url)
+	fmt.Println("[INF] Downloading the fingerprints JSON file from " + url)
 	resp, err := http.Get(url)
 	if err != nil {
 		return nil, err
@@ -61,6 +61,22 @@ func LoadFingerprints(url string) ([]Fingerprint, error) {
 
 	var fingerprints []Fingerprint
 	err = json.Unmarshal(body, &fingerprints)
+	if err != nil {
+		return nil, err
+	}
+
+	return fingerprints, nil
+}
+
+// LoadFingerprintsFromFile loads the fingerprints from a local file.
+func LoadFingerprintsFromFile(filePath string) ([]Fingerprint, error) {
+	data, err := ioutil.ReadFile(filePath)
+	if err != nil {
+		return nil, err
+	}
+
+	var fingerprints []Fingerprint
+	err = json.Unmarshal(data, &fingerprints)
 	if err != nil {
 		return nil, err
 	}

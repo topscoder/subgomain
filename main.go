@@ -14,7 +14,7 @@ import (
 func main() {
 	// Define command-line flags
 	domainsFile := flag.String("domains", "", "The file containing the domains to be checked")
-	fingerprintsURL := flag.String("fingerprints", "https://raw.githubusercontent.com/topscoder/Subdominator/master/Subdominator/custom_fingerprints.json", "URL to the online fingerprints.json file to be used")
+	fingerprintsArg := flag.String("fingerprints", "", "URL or local file path to the fingerprints.json file to be used")
 	threads := flag.Int("threads", 5, "The amount of threads to be used")
 
 	// Parse command-line flags
@@ -22,15 +22,19 @@ func main() {
 
 	// Check if the domains file is provided
 	if *domainsFile == "" {
-		fmt.Println("Usage: subgomain -domains <filename> [-fingerprints <url>] [-threads <int>]")
+		fmt.Println("Usage: subgomain -domains <filename> [-fingerprints <url_or_local_path>] [-threads <int>]")
 		os.Exit(1)
 	}
 
 	// Load fingerprints
-	fps, err := fingerprints.LoadFingerprints(*fingerprintsURL)
-	if err != nil {
-		fmt.Printf("Error loading fingerprints: %v\n", err)
-		os.Exit(1)
+	var fps []fingerprints.Fingerprint
+	var err error
+	if *fingerprintsArg != "" {
+		fps, err = loadFingerprints(*fingerprintsArg)
+		if err != nil {
+			fmt.Printf("Error loading fingerprints: %v\n", err)
+			os.Exit(1)
+		}
 	}
 
 	// Read domains from file
@@ -58,14 +62,14 @@ func main() {
 			for domain := range domainChan {
 				vulnerable, err := domainchecker.CheckDomain(domain, fps)
 				if err != nil {
-					fmt.Printf("Error checking domain %s: %v\n", domain, err)
+					fmt.Printf("[ERROR] [Domain %s: %v]\n", domain, err)
 					continue
 				}
 
 				if vulnerable {
-					fmt.Printf("Domain %s is vulnerable!\n", domain)
+					fmt.Printf("[vulnerable] [%s]\n", domain)
 				} else {
-					fmt.Printf("Domain %s is not vulnerable.\n", domain)
+					fmt.Printf("[not vulnerable] [%s]\n", domain)
 				}
 			}
 		}()
@@ -73,4 +77,14 @@ func main() {
 
 	// Wait for all goroutines to finish
 	wg.Wait()
+}
+
+func loadFingerprints(fingerprintsArg string) ([]fingerprints.Fingerprint, error) {
+	if utils.IsValidURL(fingerprintsArg) {
+		// Load fingerprints from URL
+		return fingerprints.LoadFingerprints(fingerprintsArg)
+	}
+
+	// Load fingerprints from local file
+	return fingerprints.LoadFingerprintsFromFile(fingerprintsArg)
 }

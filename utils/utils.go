@@ -2,6 +2,7 @@ package utils
 
 import (
 	"bufio"
+	"net/url"
 	"os"
 )
 
@@ -24,4 +25,17 @@ func ReadDomainsFromFile(filePath string) ([]string, error) {
 	}
 
 	return domains, nil
+}
+
+// IsValidURL checks if the given string is a valid URL.
+func IsValidURL(s string) bool {
+	_, err := url.ParseRequestURI(s)
+	if err != nil {
+		return false
+	}
+	u, err := url.Parse(s)
+	if err != nil || u.Scheme == "" || u.Host == "" {
+		return false
+	}
+	return true
 }

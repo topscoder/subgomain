@@ -1,0 +1,38 @@
+[
+  {
+    "cname": ["httpstat.us"],
+    "discussion": "",
+    "documentation": "MULTIPLE FINGERPRINTS",
+    "fingerprint": [
+      "to target URL: <a href=\"https://tictail.com",
+      "httpstat"
+    ],
+    "http_status": null,
+    "nxdomain": false,
+    "service": "Test httpstat.us service",
+    "status": "Vulnerable",
+    "vulnerable": true
+  },
+  {
+    "cname": ["brightcovegallery.com", "gallery.video", "bcvp0rtal.com"],
+    "discussion": "",
+    "documentation": "MULTIPLE CNAMES",
+    "fingerprint": "<p class=\"bc-gallery-error-code\">Error Code: 404</p>",
+    "http_status": null,
+    "nxdomain": false,
+    "service": "Brightcove",
+    "status": "Vulnerable",
+    "vulnerable": true
+  },
+  {
+    "cname": ["bcvp0rtal.com"],
+    "discussion": "",
+    "documentation": "NXDOMAIN",
+    "fingerprint": "NXDOMAIN",
+    "http_status": null,
+    "nxdomain": true,
+    "service": "Brightcove",
+    "status": "Vulnerable",
+    "vulnerable": true
+  }
+]
