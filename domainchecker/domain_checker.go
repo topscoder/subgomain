@@ -2,6 +2,7 @@ package domainchecker
 
 import (
 	"context"
+	"crypto/tls"
 	"io/ioutil"
 	"math/rand"
 	"net"
@@ -66,9 +67,15 @@ func CheckDomain(domain string, fingerprints []fingerprints.Fingerprint, resolve
 		}
 	}
 
+	// Create a custom HTTP transport that skips SSL/TLS certificate verification
+	tr := &http.Transport{
+		TLSClientConfig: &tls.Config{InsecureSkipVerify: true},
+	}
+
 	// Create HTTP client with timeout
 	client := &http.Client{
-		Timeout: httpTimeout,
+		Transport: tr,
+		Timeout:   httpTimeout,
 	}
 
 	// Make HTTPS GET request with timeout
