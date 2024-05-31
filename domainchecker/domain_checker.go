@@ -89,11 +89,9 @@ func CheckDomain(domain string, fingerprints []fingerprints.Fingerprint, resolve
 	}
 
 	for _, fp := range fingerprints {
-		if fp.HTTPStatus != nil && resp.StatusCode == *fp.HTTPStatus {
-			for _, fingerprint := range fp.Fingerprint {
-				if strings.Contains(string(body), fingerprint) {
-					return true, &fp, nil
-				}
+		for _, fingerprint := range fp.Fingerprint {
+			if fingerprint != "" && strings.Contains(string(body), fingerprint) {
+				return true, &fp, nil
 			}
 		}
 	}
