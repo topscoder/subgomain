@@ -10,6 +10,7 @@ import (
 // Fingerprint represents a single fingerprint entry.
 type Fingerprint struct {
 	CNAME       []string `json:"cname"`
+	A           []string `json:"a"`
 	Fingerprint []string `json:"-"`
 	HTTPStatus  *int     `json:"http_status"`
 	Service     string   `json:"service"`
