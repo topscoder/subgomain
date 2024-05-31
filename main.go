@@ -71,7 +71,7 @@ func main() {
 		go func() {
 			defer wg.Done()
 			for domain := range domainChan {
-				vulnerable, fingerprint, matchReason, err := domainchecker.CheckDomain(domain, fps, resolvers, httpTimeout)
+				vulnerable, fingerprint, err := domainchecker.CheckDomain(domain, fps, resolvers, httpTimeout)
 				if err != nil {
 					if !*silent {
 						fmt.Printf("[ERROR] %s: %v\n", domain, err)
@@ -80,7 +80,7 @@ func main() {
 				}
 
 				if vulnerable && (fingerprint.Vulnerable || fingerprint.Status == "Vulnerable") {
-					fmt.Printf("[VULNERABLE] [%s] [%s] %s \n", fingerprint.Service, matchReason, domain)
+					fmt.Printf("[VULNERABLE] [%s] %s \n", fingerprint.Service, domain)
 				} else {
 					if !*silent {
 						fmt.Printf("[NOT VULNERABLE] %s\n", domain)
