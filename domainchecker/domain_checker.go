@@ -30,7 +30,7 @@ func rotateResolver(resolvers []string) string {
 }
 
 // CheckDomain checks if the given domain is vulnerable based on the fingerprints.
-func CheckDomain(domain string, fingerprints []fingerprints.Fingerprint, resolvers []string, httpTimeout time.Duration) (bool, *fingerprints.Fingerprint, string, error) {
+func CheckDomain(domain string, fingerprints []fingerprints.Fingerprint, resolvers []string, httpTimeout time.Duration) (bool, *fingerprints.Fingerprint, error) {
 	// Initialize ResolverIndex with a random value on the first call
 	if ResolverIndex == 0 {
 		initializeResolverIndex(resolvers)
@@ -51,36 +51,21 @@ func CheckDomain(domain string, fingerprints []fingerprints.Fingerprint, resolve
 		},
 	}
 
-	// Check CNAME with timeout
+	// fmt.Printf("[DEBUG] Checking domain: %s\n", domain)
+	// fmt.Printf("[DEBUG] Using resolver: %s\n", resolverAddress)
+
+	// Get CNAME with timeout
 	cname, err := resolver.LookupCNAME(ctx, domain)
 	if err != nil {
-		return false, nil, "", err
+
 	}
 
-	if cname != "" {
-		for _, fp := range fingerprints {
-			for _, cnameEntry := range fp.CNAME {
-				if cnameEntry != "" && strings.Contains(cname, cnameEntry) {
-					return true, &fp, "CNAME", nil
-				}
-			}
-		}
-	}
+	// fmt.Printf("[DEBUG] Fetching CNAME: %s\n", cname)
 
-	// Check A record with timeout
+	// Get A record with timeout
 	ips, err := resolver.LookupIP(ctx, "ip", domain)
 	if err != nil {
-		return false, nil, "", err
-	}
 
-	for _, ip := range ips {
-		for _, fp := range fingerprints {
-			for _, aRecord := range fp.A {
-				if aRecord != "" && aRecord == ip.String() {
-					return true, &fp, "A-record", nil
-				}
-			}
-		}
 	}
 
 	// Create a custom HTTP transport that skips SSL/TLS certificate verification
@@ -97,27 +82,78 @@ func CheckDomain(domain string, fingerprints []fingerprints.Fingerprint, resolve
 	// Make HTTPS GET request with timeout
 	req, err := http.NewRequest("GET", "https://"+domain, nil)
 	if err != nil {
-		return false, nil, "", err
+
 	}
 
 	resp, err := client.Do(req)
 	if err != nil {
-		return false, nil, "", err
+
 	}
-	defer resp.Body.Close()
 
 	body, err := ioutil.ReadAll(resp.Body)
-	if err != nil {
-		return false, nil, "", err
-	}
 
 	for _, fp := range fingerprints {
-		for _, fingerprint := range fp.Fingerprint {
-			if fingerprint != "" && strings.Contains(string(body), fingerprint) {
-				return true, &fp, "Fingerprint", nil
+		// Loop through all of the fingerprints
+		// And match the indicators.
+		// If all required indicators are matched,
+		// we have a possible subdomain takeover vulnerability.
+		// fmt.Printf("[DEBUG] Matching fingerprint for service: %s\n", fp.Service)
+
+		matchedCname := false
+		matchFingerprint := false
+		matchedARecord := false
+
+		if len(fp.CNAME) > 0 {
+			// This fingerprint requires a matching CNAME indicator
+			for _, cnameEntry := range fp.CNAME {
+				// fmt.Printf("[DEBUG] Finding CNAME record: %s\n", cnameEntry)
+				if cnameEntry != "" && strings.Contains(cname, cnameEntry) {
+					matchedCname = true
+					break
+				}
 			}
+
+			if !matchedCname {
+				continue
+			}
+		}
+
+		if len(fp.A) > 0 {
+			// This fingerprint requires a matching A record indicator
+			for _, aRecord := range fp.A {
+				// fmt.Printf("[DEBUG] Finding A record: %s\n", aRecord)
+				for _, ip := range ips {
+					if aRecord != "" && aRecord == ip.String() {
+						matchedARecord = true
+						break
+					}
+				}
+			}
+
+			if !matchedARecord {
+				continue
+			}
+		}
+
+		if len(fp.Fingerprint) > 0 {
+			// This fingerprint requires a string match fingerprint indicator
+			for _, fingerprint := range fp.Fingerprint {
+				// fmt.Printf("[DEBUG] Finding fingerprint string: %s\n", fingerprint)
+				if fingerprint != "" && strings.Contains(string(body), fingerprint) {
+					matchFingerprint = true
+					break
+				}
+			}
+
+			if !matchFingerprint {
+				continue
+			}
+		}
+
+		if matchedCname || matchedARecord || matchFingerprint {
+			return true, &fp, nil
 		}
 	}
 
-	return false, nil, "", nil
+	return false, nil, nil
 }
