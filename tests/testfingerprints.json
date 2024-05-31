@@ -300,7 +300,7 @@
     "discussion": "https://github.com/EdOverflow/can-i-take-over-xyz/issues/228",
     "documentation": "",
     "fingerprint": "Error 404 - AnnounceKit",
-    "http_status": null,
+    "http_status": 404,
     "nxdomain": false,
     "service": "Announcekit",
     "status": "Vulnerable",
@@ -310,8 +310,10 @@
     "cname": ["flexbe.com"],
     "discussion": "",
     "documentation": "",
-    "fingerprint": "flexbe",
-    "http_status": null,
+    "fingerprint": [
+      "This domain isn't connected to any <br>account on the"
+    ],
+    "http_status": 404,
     "nxdomain": false,
     "service": "Flexbe",
     "status": "Edge Case",
@@ -322,7 +324,10 @@
     "a": ["3.13.222.255", "3.13.246.91", "3.130.60.26"],
     "discussion": "https://github.com/punk-security/dnsReaper/pull/157",
     "documentation": "",
-    "fingerprint": "The page you were looking for doesn",
+    "fingerprint": [
+      "The page you were looking for doesn't exist.",
+      "<p id=\"reason\">You may have mistyped the address or the page may have moved.</p>"
+    ],
     "http_status": null,
     "nxdomain": false,
     "service": "ConvertKit",
@@ -1449,17 +1454,6 @@
     "http_status": null,
     "service": "Flexbe",
     "status": "Edge Case",
-    "False_Positive": [""]
-  },
-  {
-    "cname": [],
-    "a": ["3.13.222.255", "3.13.246.91", "3.130.60.26"],
-    "discussion": "https://github.com/punk-security/dnsReaper/pull/157",
-    "documentation": "",
-    "fingerprint": "The page you were looking for doesn",
-    "http_status": null,
-    "service": "ConvertKit",
-    "status": "Vulnerable",
     "False_Positive": [""]
   },
   {
