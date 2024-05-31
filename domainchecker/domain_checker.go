@@ -30,7 +30,7 @@ func rotateResolver(resolvers []string) string {
 }
 
 // CheckDomain checks if the given domain is vulnerable based on the fingerprints.
-func CheckDomain(domain string, fingerprints []fingerprints.Fingerprint, resolvers []string, httpTimeout time.Duration) (bool, *fingerprints.Fingerprint, error) {
+func CheckDomain(domain string, fingerprints []fingerprints.Fingerprint, resolvers []string, httpTimeout time.Duration) (bool, *fingerprints.Fingerprint, string, error) {
 	// Initialize ResolverIndex with a random value on the first call
 	if ResolverIndex == 0 {
 		initializeResolverIndex(resolvers)
@@ -51,17 +51,33 @@ func CheckDomain(domain string, fingerprints []fingerprints.Fingerprint, resolve
 		},
 	}
 
-	// Check DNS with timeout
+	// Check CNAME with timeout
 	cname, err := resolver.LookupCNAME(ctx, domain)
 	if err != nil {
-		return false, nil, err
+		return false, nil, "", err
 	}
 
 	if cname != "" {
 		for _, fp := range fingerprints {
 			for _, cnameEntry := range fp.CNAME {
-				if strings.Contains(cname, cnameEntry) {
-					return true, &fp, nil
+				if cnameEntry != "" && strings.Contains(cname, cnameEntry) {
+					return true, &fp, "CNAME", nil
+				}
+			}
+		}
+	}
+
+	// Check A record with timeout
+	ips, err := resolver.LookupIP(ctx, "ip", domain)
+	if err != nil {
+		return false, nil, "", err
+	}
+
+	for _, ip := range ips {
+		for _, fp := range fingerprints {
+			for _, aRecord := range fp.A {
+				if aRecord != "" && aRecord == ip.String() {
+					return true, &fp, "A-record", nil
 				}
 			}
 		}
@@ -81,27 +97,27 @@ func CheckDomain(domain string, fingerprints []fingerprints.Fingerprint, resolve
 	// Make HTTPS GET request with timeout
 	req, err := http.NewRequest("GET", "https://"+domain, nil)
 	if err != nil {
-		return false, nil, err
+		return false, nil, "", err
 	}
 
 	resp, err := client.Do(req)
 	if err != nil {
-		return false, nil, err
+		return false, nil, "", err
 	}
 	defer resp.Body.Close()
 
 	body, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
-		return false, nil, err
+		return false, nil, "", err
 	}
 
 	for _, fp := range fingerprints {
 		for _, fingerprint := range fp.Fingerprint {
 			if fingerprint != "" && strings.Contains(string(body), fingerprint) {
-				return true, &fp, nil
+				return true, &fp, "Fingerprint", nil
 			}
 		}
 	}
 
-	return false, nil, nil
+	return false, nil, "", nil
 }
