@@ -372,6 +372,7 @@
     "discussion": "",
     "documentation": "https://hackerone.com/reports/1474784",
     "fingerprint": "Sorry, that page doesn't exist",
+    "shodan_query": "http.html:\"brandpad\" http.html:\"sorry\"",
     "http_status": null,
     "nxdomain": false,
     "service": "Brandpad",
@@ -390,7 +391,7 @@
     "vulnerable": true
   },
   {
-    "cname": [".refined.site"],
+    "cname": ["refined.site"],
     "discussion": "https://github.com/EdOverflow/can-i-take-over-xyz/issues/376",
     "documentation": "https://help.refined.com/space/CLOUDDOCS/4704241157",
     "fingerprint": "",
