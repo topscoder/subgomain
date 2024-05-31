@@ -2,3 +2,7 @@ lp1.veidan.co.il
 distinctweb.design
 max.lpdemo.ru
 ec2-3-13-222-255.us-east-2.compute.amazonaws.com
+fbwlapp.co
+daws-api.tv-asahi.co.jp
+89.208.245.170.16clouds.com
+help.insurgrid.com
