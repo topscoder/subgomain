@@ -9,19 +9,24 @@ import (
 
 	"github.com/topscoder/subgomain/domainchecker"
 	"github.com/topscoder/subgomain/fingerprints"
+	"github.com/topscoder/subgomain/logger"
 	"github.com/topscoder/subgomain/utils"
 )
+
+var verbose bool
 
 func main() {
 	// Define command-line flags
 	domainsFile := flag.String("domains", "", "The file containing the domains to be checked")
 	fingerprintsArg := flag.String("fingerprints", "", "URL or local file path to the fingerprints.json file to be used")
 	threads := flag.Int("threads", 5, "The amount of threads to be used")
-	silent := flag.Bool("silent", false, "Only print vulnerable domains")
 	timeout := flag.Int("timeout", 2, "Timeout in seconds for HTTP requests")
+	silent := flag.Bool("silent", false, "Only print vulnerable domains")
+	verbose := flag.Bool("verbose", false, "enable verbose logging")
 
-	// Parse command-line flags
 	flag.Parse()
+
+	logger.SetVerbose(verbose)
 
 	// Check if the domains file is provided
 	if *domainsFile == "" {

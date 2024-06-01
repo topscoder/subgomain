@@ -11,6 +11,7 @@ import (
 	"time"
 
 	"github.com/topscoder/subgomain/fingerprints"
+	"github.com/topscoder/subgomain/logger"
 )
 
 // ResolverIndex keeps track of the current resolver index
@@ -31,6 +32,7 @@ func rotateResolver(resolvers []string) string {
 
 // CheckDomain checks if the given domain is vulnerable based on the fingerprints.
 func CheckDomain(domain string, fingerprints []fingerprints.Fingerprint, resolvers []string, httpTimeout time.Duration) (bool, *fingerprints.Fingerprint, error) {
+
 	// Initialize ResolverIndex with a random value on the first call
 	if ResolverIndex == 0 {
 		initializeResolverIndex(resolvers)
@@ -51,22 +53,16 @@ func CheckDomain(domain string, fingerprints []fingerprints.Fingerprint, resolve
 		},
 	}
 
-	// fmt.Printf("[DEBUG] Checking domain: %s\n", domain)
-	// fmt.Printf("[DEBUG] Using resolver: %s\n", resolverAddress)
+	logger.LogDebug("Checking domain: %s", domain)
+	logger.LogDebug("Using resolver: %s", resolverAddress)
 
 	// Get CNAME with timeout
-	cname, err := resolver.LookupCNAME(ctx, domain)
-	if err != nil {
+	cname, cnameErr := resolver.LookupCNAME(ctx, domain)
 
-	}
-
-	// fmt.Printf("[DEBUG] Fetching CNAME: %s\n", cname)
+	logger.LogDebug("Fetching CNAME: %s", cname)
 
 	// Get A record with timeout
-	ips, err := resolver.LookupIP(ctx, "ip", domain)
-	if err != nil {
-
-	}
+	ips, aRecordErr := resolver.LookupIP(ctx, "ip", domain)
 
 	// Create a custom HTTP transport that skips SSL/TLS certificate verification
 	tr := &http.Transport{
@@ -80,33 +76,33 @@ func CheckDomain(domain string, fingerprints []fingerprints.Fingerprint, resolve
 	}
 
 	// Make HTTPS GET request with timeout
-	req, err := http.NewRequest("GET", "https://"+domain, nil)
-	if err != nil {
-
+	responseBody := ""
+	req, httpsGetErr := http.NewRequest("GET", "https://"+domain, nil)
+	if httpsGetErr == nil {
+		resp, doHttpsGetErr := client.Do(req)
+		if doHttpsGetErr == nil {
+			body, readBodyErr := ioutil.ReadAll(resp.Body)
+			if readBodyErr == nil {
+				responseBody = string(body)
+			}
+		}
 	}
-
-	resp, err := client.Do(req)
-	if err != nil {
-
-	}
-
-	body, err := ioutil.ReadAll(resp.Body)
 
 	for _, fp := range fingerprints {
 		// Loop through all of the fingerprints
 		// And match the indicators.
 		// If all required indicators are matched,
 		// we have a possible subdomain takeover vulnerability.
-		// fmt.Printf("[DEBUG] Matching fingerprint for service: %s\n", fp.Service)
+		logger.LogDebug("Matching fingerprint for service: %s", fp.Service)
 
 		matchedCname := false
 		matchFingerprint := false
 		matchedARecord := false
 
-		if len(fp.CNAME) > 0 {
+		if cnameErr == nil && len(fp.CNAME) > 0 {
 			// This fingerprint requires a matching CNAME indicator
 			for _, cnameEntry := range fp.CNAME {
-				// fmt.Printf("[DEBUG] Finding CNAME record: %s\n", cnameEntry)
+				logger.LogDebug("-- Finding CNAME record: %s", cnameEntry)
 				if cnameEntry != "" && strings.Contains(cname, cnameEntry) {
 					matchedCname = true
 					break
@@ -118,14 +114,16 @@ func CheckDomain(domain string, fingerprints []fingerprints.Fingerprint, resolve
 			}
 		}
 
-		if len(fp.A) > 0 {
+		if aRecordErr == nil && len(fp.A) > 0 {
 			// This fingerprint requires a matching A record indicator
 			for _, aRecord := range fp.A {
-				// fmt.Printf("[DEBUG] Finding A record: %s\n", aRecord)
-				for _, ip := range ips {
-					if aRecord != "" && aRecord == ip.String() {
-						matchedARecord = true
-						break
+				if aRecord != "" {
+					logger.LogDebug("-- Finding A record: %s", aRecord)
+					for _, ip := range ips {
+						if aRecord == ip.String() {
+							matchedARecord = true
+							break
+						}
 					}
 				}
 			}
@@ -138,8 +136,8 @@ func CheckDomain(domain string, fingerprints []fingerprints.Fingerprint, resolve
 		if len(fp.Fingerprint) > 0 {
 			// This fingerprint requires a string match fingerprint indicator
 			for _, fingerprint := range fp.Fingerprint {
-				// fmt.Printf("[DEBUG] Finding fingerprint string: %s\n", fingerprint)
-				if fingerprint != "" && strings.Contains(string(body), fingerprint) {
+				if fingerprint != "" && strings.Contains(string(responseBody), fingerprint) {
+					logger.LogDebug("-- Finding fingerprint string: %s", fingerprint)
 					matchFingerprint = true
 					break
 				}
