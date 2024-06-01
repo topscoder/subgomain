@@ -13,7 +13,7 @@ go install -v github.com/topscoder/subgomain@latest
 ## Usage
 
 ```bash
-subgomain -domains <filename> [-fingerprints <url_or_local_path>] [-threads <int>] [-timeout <seconds>] [-silent]
+subgomain -domains <filename> [-fingerprints <url_or_local_path>] [-threads <int>] [-timeout <seconds>] [-silent] [-debug]
 ```
 
 ### Arguments
