@@ -609,8 +609,8 @@
     "discussion": "https://github.com/EdOverflow/can-i-take-over-xyz/issues/154",
     "documentation": "https://khaledibnalwalid.wordpress.com/2020/06/25/gemfury-subdomain-takeover/",
     "False_Positive": [""],
-    "status": "Vulnerable",
-    "vulnerable": true
+    "status": "Edge Case",
+    "vulnerable": false
   },
   {
     "service": "Getresponse",
@@ -917,10 +917,11 @@
     "vulnerable": true
   },
   {
+    "cname": [".surveysparrow.com"],
     "service": "SurveySparrow",
     "fingerprint": "Account not found.",
     "discussion": "https://github.com/EdOverflow/can-i-take-over-xyz/issues/281",
-    "documentation": "https://help.surveysparrow.com/custom-domain",
+    "documentation": "https://support.surveysparrow.com/hc/en-us/articles/7079286080413-Custom-Domain",
     "False_Positive": [""],
     "status": "Vulnerable",
     "vulnerable": true
