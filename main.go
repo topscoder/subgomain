@@ -13,8 +13,6 @@ import (
 	"github.com/topscoder/subgomain/utils"
 )
 
-var verbose bool
-
 func main() {
 	// Define command-line flags
 	domainsFile := flag.String("domains", "", "The file containing the domains to be checked")
