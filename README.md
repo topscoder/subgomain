@@ -23,7 +23,7 @@ subgomain -domains <filename> [-fingerprints <url_or_local_path>] [-threads <int
 - `-threads <number-of-threads>` (optional, default 5): Specifies the number of concurrent threads to use for domain checking. Optional. Defaults to the number of logical CPUs.
 - `-timeout <seconds>` (optional, default 2): Specifies the HTTP timeout in seconds. Optional. Defaults to 2 seconds.
 - `-silent` (optional): If provided, only prints vulnerable domains without any additional output. Optional.
-- `-verbose` (optional): If provided, the application prints (loads of) debug messages.
+- `-debug` (optional): If provided, the application prints (loads of) debug messages.
 
 ## Examples
 

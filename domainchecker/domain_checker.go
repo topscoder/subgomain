@@ -53,15 +53,13 @@ func CheckDomain(domain string, fingerprints []fingerprints.Fingerprint, resolve
 		},
 	}
 
-	logger.LogDebug("Checking domain: %s", domain)
-	logger.LogDebug("Using resolver: %s", resolverAddress)
+	logger.LogDebug("[%s] Checking domain", domain)
+	logger.LogDebug("[%s] Using resolver: %s", domain, resolverAddress)
 
-	// Get CNAME with timeout
 	cname, cnameErr := resolver.LookupCNAME(ctx, domain)
 
-	logger.LogDebug("Fetching CNAME: %s", cname)
+	logger.LogDebug("[%s] Fetched CNAME: %s", domain, cname)
 
-	// Get A record with timeout
 	ips, aRecordErr := resolver.LookupIP(ctx, "ip", domain)
 
 	// Create a custom HTTP transport that skips SSL/TLS certificate verification
@@ -93,7 +91,7 @@ func CheckDomain(domain string, fingerprints []fingerprints.Fingerprint, resolve
 		// And match the indicators.
 		// If all required indicators are matched,
 		// we have a possible subdomain takeover vulnerability.
-		logger.LogDebug("Matching fingerprint for service: %s", fp.Service)
+		logger.LogDebug("[%s] Matching fingerprint for service: %s", domain, fp.Service)
 
 		matchedCname := false
 		matchFingerprint := false
@@ -102,7 +100,7 @@ func CheckDomain(domain string, fingerprints []fingerprints.Fingerprint, resolve
 		if cnameErr == nil && len(fp.CNAME) > 0 {
 			// This fingerprint requires a matching CNAME indicator
 			for _, cnameEntry := range fp.CNAME {
-				logger.LogDebug("-- Finding CNAME record: %s", cnameEntry)
+				logger.LogDebug("[%s] - Finding CNAME record: %s", domain, cnameEntry)
 				if cnameEntry != "" && strings.Contains(cname, cnameEntry) {
 					matchedCname = true
 					break
@@ -118,7 +116,7 @@ func CheckDomain(domain string, fingerprints []fingerprints.Fingerprint, resolve
 			// This fingerprint requires a matching A record indicator
 			for _, aRecord := range fp.A {
 				if aRecord != "" {
-					logger.LogDebug("-- Finding A record: %s", aRecord)
+					logger.LogDebug("[%s] - Finding A record: %s", domain, aRecord)
 					for _, ip := range ips {
 						if aRecord == ip.String() {
 							matchedARecord = true
@@ -137,7 +135,7 @@ func CheckDomain(domain string, fingerprints []fingerprints.Fingerprint, resolve
 			// This fingerprint requires a string match fingerprint indicator
 			for _, fingerprint := range fp.Fingerprint {
 				if fingerprint != "" && strings.Contains(string(responseBody), fingerprint) {
-					logger.LogDebug("-- Finding fingerprint string: %s", fingerprint)
+					logger.LogDebug("[%s] - Finding fingerprint string: %s", domain, fingerprint)
 					matchFingerprint = true
 					break
 				}

@@ -20,11 +20,11 @@ func main() {
 	threads := flag.Int("threads", 5, "The amount of threads to be used")
 	timeout := flag.Int("timeout", 2, "Timeout in seconds for HTTP requests")
 	silent := flag.Bool("silent", false, "Only print vulnerable domains")
-	verbose := flag.Bool("verbose", false, "enable verbose logging")
+	debug := flag.Bool("debug", false, "enable debug logging")
 
 	flag.Parse()
 
-	logger.SetVerbose(verbose)
+	logger.SetVerbose(debug)
 
 	// Check if the domains file is provided
 	if *domainsFile == "" {
