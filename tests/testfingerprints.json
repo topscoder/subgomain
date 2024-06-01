@@ -320,20 +320,6 @@
     "vulnerable": true
   },
   {
-    "cname": [],
-    "discussion": "https://github.com/punk-security/dnsReaper/pull/157",
-    "documentation": "",
-    "fingerprint": [
-      "The page you were looking for doesn't exist.",
-      "<p id=\"reason\">You may have mistyped the address or the page may have moved.</p>"
-    ],
-    "http_status": null,
-    "nxdomain": false,
-    "service": "ConvertKit",
-    "status": "Vulnerable",
-    "vulnerable": true
-  },
-  {
     "cname": ["domains.tribeplatform.com"],
     "discussion": "https://github.com/EdOverflow/can-i-take-over-xyz/issues/286",
     "documentation": "https://community.tribe.so/knowledge-base-2-0/post/custom-domain-GN59yUKKHrgKdBX",
