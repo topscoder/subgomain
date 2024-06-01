@@ -102,6 +102,7 @@ func CheckDomain(domain string, fingerprints []fingerprints.Fingerprint, resolve
 			for _, cnameEntry := range fp.CNAME {
 				logger.LogDebug("[%s] - Finding CNAME record: %s", domain, cnameEntry)
 				if cnameEntry != "" && strings.Contains(cname, cnameEntry) {
+					logger.LogDebug("[%s] [MATCH] - Matched CNAME record: %s", domain, cnameEntry)
 					matchedCname = true
 					break
 				}
@@ -119,6 +120,7 @@ func CheckDomain(domain string, fingerprints []fingerprints.Fingerprint, resolve
 					logger.LogDebug("[%s] - Finding A record: %s", domain, aRecord)
 					for _, ip := range ips {
 						if aRecord == ip.String() {
+							logger.LogDebug("[%s] [MATCH] - Matched A record: %s", domain, aRecord)
 							matchedARecord = true
 							break
 						}
@@ -134,8 +136,9 @@ func CheckDomain(domain string, fingerprints []fingerprints.Fingerprint, resolve
 		if len(fp.Fingerprint) > 0 {
 			// This fingerprint requires a string match fingerprint indicator
 			for _, fingerprint := range fp.Fingerprint {
+				logger.LogDebug("[%s] - Finding fingerprint string: %s", domain, fingerprint)
 				if fingerprint != "" && strings.Contains(string(responseBody), fingerprint) {
-					logger.LogDebug("[%s] - Finding fingerprint string: %s", domain, fingerprint)
+					logger.LogDebug("[%s] [MATCH] - Matched fingerprint string: %s", domain, fingerprint)
 					matchFingerprint = true
 					break
 				}
