@@ -2,9 +2,10 @@ package fingerprints
 
 import (
 	"encoding/json"
-	"fmt"
 	"io/ioutil"
 	"net/http"
+
+	"github.com/topscoder/subgomain/logger"
 )
 
 // Fingerprint represents a single fingerprint entry.
@@ -48,7 +49,7 @@ func (f *Fingerprint) UnmarshalJSON(data []byte) error {
 
 // LoadFingerprints loads the fingerprints from the given URL.
 func LoadFingerprints(url string) ([]Fingerprint, error) {
-	fmt.Println("[INF] Downloading the fingerprints JSON file from " + url)
+	logger.LogDebug("Downloading the fingerprints JSON file from " + url)
 	resp, err := http.Get(url)
 	if err != nil {
 		return nil, err
