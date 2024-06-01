@@ -3,6 +3,7 @@ name: 🎉 Release Binary
 on:
   push:
     tags:
+        - 2*
   workflow_dispatch:
 
 jobs:
