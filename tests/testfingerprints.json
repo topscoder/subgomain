@@ -279,7 +279,7 @@
     "http_status": null,
     "nxdomain": false,
     "service": "Flywheel",
-    "status": "Vulnerable",
+    "status": "Not Vulnerable",
     "vulnerable": false
   },
   {
@@ -306,8 +306,21 @@
     "vulnerable": true
   },
   {
-    "cname": [],
     "a": ["3.13.222.255", "3.13.246.91", "3.130.60.26"],
+    "discussion": "https://github.com/punk-security/dnsReaper/pull/157",
+    "documentation": "",
+    "fingerprint": [
+      "The page you were looking for doesn't exist.",
+      "<p id=\"reason\">You may have mistyped the address or the page may have moved.</p>"
+    ],
+    "http_status": null,
+    "nxdomain": false,
+    "service": "ConvertKit",
+    "status": "Vulnerable",
+    "vulnerable": true
+  },
+  {
+    "cname": [],
     "discussion": "https://github.com/punk-security/dnsReaper/pull/157",
     "documentation": "",
     "fingerprint": [
@@ -478,6 +491,7 @@
     "vulnerable": true
   },
   {
+    "cname": [".s3.amazonaws.com"],
     "service": "AWS/S3",
     "fingerprint": "The specified bucket does not exist",
     "discussion": "https://github.com/EdOverflow/can-i-take-over-xyz/issues/36",
@@ -889,6 +903,7 @@
     "vulnerable": false
   },
   {
+    "cname": ["s.strikinglydns.com"],
     "service": "Strikingly",
     "fingerprint": "PAGE NOT FOUND",
     "discussion": "https://github.com/EdOverflow/can-i-take-over-xyz/issues/58",
@@ -1004,12 +1019,12 @@
   },
   {
     "service": "Wordpress",
-    "fingerprint": "Do you want to register ",
+    "fingerprint": "upgrade to link the requested domain name to the WordPress.com site",
     "discussion": "https://hackerone.com/reports/274336",
-    "documentation": "Not available",
+    "documentation": "You need a paid plan to connect a personal domain to a wordpress.com site.",
     "False_Positive": [""],
-    "status": "Vulnerable",
-    "vulnerable": true
+    "status": "Edge Case",
+    "vulnerable": false
   },
   {
     "service": "Worksites",
