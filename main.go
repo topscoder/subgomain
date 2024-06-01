@@ -43,7 +43,11 @@ func main() {
 		}
 	}
 
-	resolvers, err := utils.LoadResolvers("https://raw.githubusercontent.com/trickest/resolvers/main/resolvers.txt")
+	var resolversUrl = "https://raw.githubusercontent.com/trickest/resolvers/main/resolvers.txt"
+
+	logger.LogDebug("Downloading resolvers list from ", resolversUrl)
+
+	resolvers, err := utils.LoadResolvers(resolversUrl)
 	if err != nil {
 		fmt.Printf("Error loading resolvers: %v\n", err)
 		os.Exit(1)
