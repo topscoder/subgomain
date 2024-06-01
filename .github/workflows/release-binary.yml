@@ -3,8 +3,11 @@ name: 🎉 Release Binary
 on:
   push:
     tags:
-        - 2*
+        - '*'
   workflow_dispatch:
+
+permissions:
+  contents: write
 
 jobs:
   release:
@@ -21,7 +24,7 @@ jobs:
           go-version: 1.22.3
 
       - name: "Create release on GitHub"
-        uses: goreleaser/goreleaser-action@v4
+        uses: goreleaser/goreleaser-action@v5.1.0
         with:
           args: "release --clean"
           version: latest
