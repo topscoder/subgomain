@@ -310,9 +310,7 @@
     "cname": ["flexbe.com"],
     "discussion": "",
     "documentation": "",
-    "fingerprint": [
-      "This domain isn't connected to any <br>account on the"
-    ],
+    "fingerprint": ["This domain isn't connected to any <br>account on the"],
     "http_status": 404,
     "nxdomain": false,
     "service": "Flexbe",
@@ -530,6 +528,17 @@
     "vulnerable": true
   },
   {
+    "cname": ["ns1.animaapp.com"],
+    "service": "Anima",
+    "fingerprint": "The page you were looking for does not exist.",
+    "discussion": "https://github.com/EdOverflow/can-i-take-over-xyz/issues/126",
+    "documentation": "https://docs.animaapp.com/v1/launchpad/08-custom-domain.html",
+    "False_Positive": [""],
+    "status": "Vulnerable",
+    "vulnerable": true
+  },
+  {
+    "a": ["35.164.217.247"],
     "service": "Anima",
     "fingerprint": "The page you were looking for does not exist.",
     "discussion": "https://github.com/EdOverflow/can-i-take-over-xyz/issues/126",
@@ -695,12 +704,8 @@
     ],
     "service": "Intercom",
     "status": "Edge case",
-    "fingerprint": [
-      "Not found"
-    ],
-    "http_header": [
-      ".intercom.io"
-    ],
+    "fingerprint": ["Not found"],
+    "http_header": [".intercom.io"],
     "http_status": 404,
     "discussion": "https://github.com/EdOverflow/can-i-take-over-xyz/issues/69",
     "documentation": "https://developers.intercom.com/docs/guides/help-center/custom-domains/",
@@ -716,10 +721,7 @@
     "vulnerable": true
   },
   {
-    "cname": [
-      ".kinstavalidation.app",
-      ".hosting.kinsta.cloud"
-    ],
+    "cname": [".kinstavalidation.app", ".hosting.kinsta.cloud"],
     "service": "Kinsta",
     "fingerprint": [
       "Domain configuration pending",
