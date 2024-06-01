@@ -110,7 +110,6 @@
     "discussion": "",
     "documentation": "",
     "fingerprint": "",
-    "nxdomain": true,
     "http_status": null,
     "nxdomain": true,
     "service": "Apigee",
@@ -273,26 +272,15 @@
     "vulnerable": true
   },
   {
-    "cname": ["gitbook.io"],
-    "discussion": "",
-    "documentation": "",
-    "fingerprint": "Domain not found",
-    "http_status": null,
-    "nxdomain": false,
-    "service": "Gitbook",
-    "status": "Vulnerable",
-    "vulnerable": true
-  },
-  {
     "cname": [],
     "discussion": "",
-    "documentation": "",
+    "documentation": "01.06.2024: Each domain now needs it's own unique TXT verification record.",
     "fingerprint": "you've landed on a page that is hosted by Flywheel",
     "http_status": null,
     "nxdomain": false,
     "service": "Flywheel",
     "status": "Vulnerable",
-    "vulnerable": true
+    "vulnerable": false
   },
   {
     "cname": ["cname.announcekit.app"],
@@ -1298,9 +1286,10 @@
     "documentation": "",
     "fingerprint": "Domain not found",
     "http_status": null,
+    "nxdomain": false,
     "service": "Gitbook",
     "status": "Vulnerable",
-    "False_Positive": [""]
+    "vulnerable": true
   },
   {
     "cname": ["cname.announcekit.app"],
