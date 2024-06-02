@@ -97,14 +97,16 @@ func CheckDomain(domain string, fingerprints []fingerprints.Fingerprint, resolve
 		matchFingerprint := false
 		matchedARecord := false
 
-		if cnameErr == nil && len(fp.CNAME) > 0 {
+		if len(fp.CNAME) > 0 {
 			// This fingerprint requires a matching CNAME indicator
-			for _, cnameEntry := range fp.CNAME {
-				logger.LogDebug("[%s] - Finding CNAME record: %s", domain, cnameEntry)
-				if cnameEntry != "" && strings.Contains(cname, cnameEntry) {
-					logger.LogDebug("[%s] [MATCH] - Matched CNAME record: %s", domain, cnameEntry)
-					matchedCname = true
-					break
+			if cnameErr == nil {
+				for _, cnameEntry := range fp.CNAME {
+					logger.LogDebug("[%s] - Finding CNAME record: %s", domain, cnameEntry)
+					if cnameEntry != "" && strings.Contains(cname, cnameEntry) {
+						logger.LogDebug("[%s] [MATCH] - Matched CNAME record: %s", domain, cnameEntry)
+						matchedCname = true
+						break
+					}
 				}
 			}
 
@@ -113,16 +115,18 @@ func CheckDomain(domain string, fingerprints []fingerprints.Fingerprint, resolve
 			}
 		}
 
-		if aRecordErr == nil && len(fp.A) > 0 {
+		if len(fp.A) > 0 {
 			// This fingerprint requires a matching A record indicator
-			for _, aRecord := range fp.A {
-				if aRecord != "" {
-					logger.LogDebug("[%s] - Finding A record: %s", domain, aRecord)
-					for _, ip := range ips {
-						if aRecord == ip.String() {
-							logger.LogDebug("[%s] [MATCH] - Matched A record: %s", domain, aRecord)
-							matchedARecord = true
-							break
+			if aRecordErr == nil {
+				for _, aRecord := range fp.A {
+					if aRecord != "" {
+						logger.LogDebug("[%s] - Finding A record: %s", domain, aRecord)
+						for _, ip := range ips {
+							if aRecord == ip.String() {
+								logger.LogDebug("[%s] [MATCH] - Matched A record: %s", domain, aRecord)
+								matchedARecord = true
+								break
+							}
 						}
 					}
 				}
