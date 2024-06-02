@@ -15,6 +15,7 @@ import (
 
 func main() {
 	// Define command-line flags
+	domain := flag.String("domain", "", "A single domain to be checked")
 	domainsFile := flag.String("domains", "", "The file containing the domains to be checked")
 	fingerprintsArg := flag.String("fingerprints", "", "URL or local file path to the fingerprints.json file to be used")
 	threads := flag.Int("threads", 5, "The amount of threads to be used")
@@ -27,20 +28,25 @@ func main() {
 	logger.SetVerbose(debug)
 
 	// Check if the domains file is provided
-	if *domainsFile == "" {
-		fmt.Println("Usage: subgomain -domains <filename> [-fingerprints <url_or_local_path>] [-threads <int>] [-timeout <seconds>] [-silent]")
+	if *domain == "" && *domainsFile == "" {
+		fmt.Println("Usage: subgomain -domain <domain> | -domains <filename> [-fingerprints <url_or_local_path>] [-threads <int>] [-timeout <seconds>] [-silent]")
 		os.Exit(1)
 	}
 
 	// Load fingerprints
 	var fps []fingerprints.Fingerprint
 	var err error
+	fingerprintFile := ""
 	if *fingerprintsArg != "" {
-		fps, err = loadFingerprints(*fingerprintsArg)
-		if err != nil {
-			fmt.Printf("Error loading fingerprints: %v\n", err)
-			os.Exit(1)
-		}
+		fingerprintFile = *fingerprintsArg
+	} else {
+		fingerprintFile = "https://raw.githubusercontent.com/topscoder/subgomain/main/tests/testfingerprints.json"
+	}
+
+	fps, err = loadFingerprints(fingerprintFile)
+	if err != nil {
+		fmt.Printf("Error loading fingerprints: %v\n", err)
+		os.Exit(1)
 	}
 
 	var resolversUrl = "https://raw.githubusercontent.com/trickest/resolvers/main/resolvers.txt"
@@ -53,11 +59,18 @@ func main() {
 		os.Exit(1)
 	}
 
-	// Read domains from file
-	domains, err := utils.ReadDomainsFromFile(*domainsFile)
-	if err != nil {
-		fmt.Printf("Error reading domains: %v\n", err)
-		os.Exit(1)
+	var domains []string
+
+	// If a single domain is provided, use it
+	if *domain != "" {
+		domains = []string{*domain}
+	} else {
+		// Read domains from file
+		domains, err = utils.ReadDomainsFromFile(*domainsFile)
+		if err != nil {
+			fmt.Printf("Error reading domains: %v\n", err)
+			os.Exit(1)
+		}
 	}
 
 	// Create a channel to manage domain processing
