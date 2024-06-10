@@ -1076,18 +1076,13 @@
     "False_Positive": [""]
   },
   {
-    "service": "WP Engine",
-    "fingerprint": [],
-    "discussion": "",
-    "documentation": "Not available",
-    "False_Positive": [""],
-    "status": "Not Vulnerable",
-    "vulnerable": false
-  },
-  {
     "service": "Webflow",
+    "cname": ["proxy.webflow.com", "proxy-ssl.webflow.com"],
     "status": "Vulnerable",
-    "fingerprint": "The page you are looking for doesn't exist or has been moved.",
+    "vulnerable": true,
+    "fingerprint": [
+      "The page you are looking for doesn't exist or has been moved."
+    ],
     "discussion": "https://github.com/EdOverflow/can-i-take-over-xyz/issues/44",
     "documentation": "https://forum.webflow.com/t/hosting-a-subdomain-on-webflow/59201",
     "False_Positive": [""]
@@ -1645,19 +1640,10 @@
   },
   {
     "service": "Fastly",
-    "cname": ["fastly.net"],
-    "status": "Vulnerable",
-    "discussion": "",
-    "documentation": "",
-    "fingerprint": [],
-    "http_status": null,
-    "False_Positive": [""]
-  },
-  {
-    "service": "Fastly",
     "a": ["151.101.", "2a04:4e42:"],
     "cname": [],
     "status": "Vulnerable",
+    "vulnerable": true,
     "discussion": "",
     "documentation": "Match on A/AAAA records. Find out if an additional fingerprint is needed.",
     "fingerprint": ["Fastly error: unknown domain"],
@@ -1669,6 +1655,7 @@
     "a": [],
     "cname": [],
     "status": "Vulnerable",
+    "vulnerable": true,
     "discussion": "",
     "documentation": "Match on fingerprint. Find out if an additional fingerprint is needed.",
     "fingerprint": ["Fastly error: unknown domain"],
@@ -1803,7 +1790,10 @@
     "vulnerable": true,
     "discussion": "",
     "documentation": "Match on A/AAAA records. Find out if an additional fingerprint is needed.",
-    "fingerprint": [],
+    "fingerprint": [
+      "Site is frozen",
+      "The page could not be loaded properly"
+    ],
     "http_status": null,
     "False_Positive": [""]
   },
@@ -1910,17 +1900,6 @@
   {
     "service": "UserVoice",
     "cname": ["uservoice.com"],
-    "status": "Vulnerable",
-    "vulnerable": true,
-    "discussion": "",
-    "documentation": "",
-    "fingerprint": [],
-    "http_status": null,
-    "False_Positive": [""]
-  },
-  {
-    "service": "Webflow",
-    "cname": ["proxy.webflow.com", "proxy-ssl.webflow.com"],
     "status": "Vulnerable",
     "vulnerable": true,
     "discussion": "",
