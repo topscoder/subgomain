@@ -487,9 +487,7 @@
     "vulnerable": true
   },
   {
-    "cname": [
-      ".elasticbeanstalk.com"
-    ],
+    "cname": [".elasticbeanstalk.com"],
     "service": "AWS Elastic Beanstalk",
     "fingerprint": [],
     "nxdomain": true,
@@ -1956,5 +1954,269 @@
     "fingerprint": [],
     "http_status": null,
     "False_Positive": [""]
+  },
+  {
+    "cname": ["secure.recruitee.com"],
+    "discussion": "",
+    "documentation": "https://support.recruitee.com/en/articles/1066310-use-a-custom-domain-for-your-careers-site",
+    "fingerprint": [],
+    "http_status": null,
+    "nxdomain": false,
+    "service": "Recruitee",
+    "status": "Edge Case",
+    "vulnerable": true
+  },
+  {
+    "cname": ["domains.sellfy.com"],
+    "discussion": "",
+    "documentation": "https://docs.sellfy.com/article/199-custom-domain",
+    "fingerprint": [],
+    "http_status": null,
+    "nxdomain": false,
+    "service": "Sellfy",
+    "status": "Unknown",
+    "vulnerable": true
+  },
+  {
+    "cname": [".fly.dev"],
+    "discussion": "",
+    "documentation": "https://fly.io/docs/networking/custom-domain/",
+    "fingerprint": [],
+    "http_status": null,
+    "nxdomain": false,
+    "service": "Fly App",
+    "status": "Unknown",
+    "vulnerable": true
+  },
+  {
+    "cname": ["ingress.stoplight.io"],
+    "discussion": "",
+    "documentation": "https://docs.stoplight.io/docs/platform/60d8754e500d0-use-a-custom-domain",
+    "fingerprint": [],
+    "http_status": null,
+    "nxdomain": false,
+    "service": "Stoplight",
+    "status": "Unknown",
+    "vulnerable": true
+  },
+  {
+    "cname": ["domains.bettermode.io"],
+    "discussion": "",
+    "documentation": "https://bettermode.com/hub/branding/post/use-a-custom-domain-or-subdomain-qfTp9h6Y30WEX6F",
+    "fingerprint": [],
+    "http_status": null,
+    "nxdomain": false,
+    "service": "Bettermode",
+    "status": "Unknown",
+    "vulnerable": true
+  },
+  {
+    "cname": ["hub.arcgis.com"],
+    "discussion": "",
+    "documentation": "https://doc.arcgis.com/en/hub/sites/use-a-custom-domain.htm",
+    "fingerprint": [],
+    "http_status": null,
+    "nxdomain": false,
+    "service": "ArcGIS Hub",
+    "status": "Unknown",
+    "vulnerable": true
+  },
+  {
+    "cname": ["domains.rewardful.com"],
+    "discussion": "",
+    "documentation": "https://help.rewardful.com/en/articles/2839320-how-to-use-a-custom-domain-for-your-affiliate-dashboard",
+    "fingerprint": [],
+    "http_status": null,
+    "nxdomain": false,
+    "service": "Rewardful",
+    "status": "Unknown",
+    "vulnerable": true
+  },
+  {
+    "cname": ["ssl.blogs.storychief.io"],
+    "discussion": "",
+    "documentation": "https://help.storychief.io/en/articles/1039823-william-use-a-custom-domain-name-for-your-blog",
+    "fingerprint": [],
+    "http_status": null,
+    "nxdomain": false,
+    "service": "StoryChief",
+    "status": "Unknown",
+    "vulnerable": true
+  },
+  {
+    "cname": ["cname.confetti.events"],
+    "discussion": "",
+    "documentation": "https://support.confetti.events/en/articles/422093-how-do-i-use-a-custom-domain",
+    "fingerprint": [],
+    "http_status": null,
+    "nxdomain": false,
+    "service": "StoryChief",
+    "status": "Unknown",
+    "vulnerable": true
+  },
+  {
+    "cname": ["www.supersaas.com"],
+    "discussion": "",
+    "documentation": "https://www.supersaas.com/info/doc/layout/custom_domain",
+    "fingerprint": [],
+    "http_status": null,
+    "nxdomain": false,
+    "service": "SuperSaaS",
+    "status": "Unknown",
+    "vulnerable": true
+  },
+  {
+    "cname": ["domains.smugmug.com"],
+    "discussion": "",
+    "documentation": "https://www.smugmughelp.com/hc/en-us/articles/18212351739284-Use-a-custom-domain",
+    "fingerprint": [],
+    "http_status": null,
+    "nxdomain": false,
+    "service": "SmugMug",
+    "status": "Unknown",
+    "vulnerable": true
+  },
+  {
+    "cname": [".gavel.io"],
+    "discussion": "",
+    "documentation": "https://help.gavel.io/articles/custom-domain",
+    "fingerprint": [],
+    "http_status": null,
+    "nxdomain": false,
+    "service": "Gavel",
+    "status": "Unknown",
+    "vulnerable": true
+  },
+  {
+    "cname": ["custom.infoset.help"],
+    "discussion": "",
+    "documentation": "https://infoset.app/help/en/articles/489-use-a-custom-domain-for-your-help-center",
+    "fingerprint": [],
+    "http_status": null,
+    "nxdomain": false,
+    "service": "Infoset",
+    "status": "Unknown",
+    "vulnerable": true
+  },
+  {
+    "cname": [".kunlunsl.com"],
+    "discussion": "",
+    "documentation": "https://www.alibabacloud.com/help/en/oss/user-guide/tutorial-use-a-custom-domain-name-to-configure-static-website-hosting",
+    "fingerprint": [],
+    "http_status": null,
+    "nxdomain": false,
+    "service": "Alibaba Cloud",
+    "status": "Unknown",
+    "vulnerable": true
+  },
+  {
+    "cname": [".eventmobi.live"],
+    "discussion": "",
+    "documentation": "https://help.eventmobi.com/en/knowledge/can-i-change-my-app-address-or-use-a-custom-domain",
+    "fingerprint": [],
+    "http_status": null,
+    "nxdomain": false,
+    "service": "EventMobi",
+    "status": "Unknown",
+    "vulnerable": true
+  },
+  {
+    "cname": [".play.minekube.net"],
+    "discussion": "",
+    "documentation": "https://connect.minekube.com/guide/domains",
+    "fingerprint": [],
+    "http_status": null,
+    "nxdomain": false,
+    "service": "Minekube Connect",
+    "status": "Unknown",
+    "vulnerable": true
+  },
+  {
+    "cname": ["app.upviral.com"],
+    "discussion": "",
+    "documentation": "https://support.upviral.com/support/solutions/articles/4000059228-how-to-use-a-custom-domain-name-in-a-campaign-",
+    "fingerprint": [],
+    "http_status": null,
+    "nxdomain": false,
+    "service": "UpViral",
+    "status": "Unknown",
+    "vulnerable": true
+  },
+  {
+    "cname": [".odoo.com"],
+    "discussion": "",
+    "documentation": "https://www.odoo.com/forum/help-1/how-to-use-a-custom-domain-with-odoo-v14-186151",
+    "fingerprint": [],
+    "http_status": null,
+    "nxdomain": false,
+    "service": "Odoo",
+    "status": "Unknown",
+    "vulnerable": true
+  },
+  {
+    "cname": ["customers.sellix.io"],
+    "discussion": "",
+    "documentation": "https://help.sellix.io/en/articles/4754235-how-do-i-use-a-custom-domain-for-my-shop",
+    "fingerprint": [],
+    "http_status": null,
+    "nxdomain": false,
+    "service": "Sellix",
+    "status": "Unknown",
+    "vulnerable": true
+  },
+  {
+    "cname": [".deskpro.com"],
+    "discussion": "",
+    "documentation": "https://support.deskpro.com/en/kb/articles/can-i-use-a-custom-domain-name-for-the-portal",
+    "fingerprint": [],
+    "http_status": null,
+    "nxdomain": false,
+    "service": "Deskpro Cloud",
+    "status": "Unknown",
+    "vulnerable": true
+  },
+  {
+    "cname": ["forms.app"],
+    "discussion": "",
+    "documentation": "https://forms.app/en/help-center/how-to-use-a-custom-domain-for-your-form-url",
+    "fingerprint": [],
+    "http_status": null,
+    "nxdomain": false,
+    "service": "forms.app",
+    "status": "Unknown",
+    "vulnerable": true
+  },
+  {
+    "cname": ["superdocu.com"],
+    "discussion": "",
+    "documentation": "https://help.superdocu.com/en/how-to-use-a-custom-domain-with-superdocu",
+    "fingerprint": [],
+    "http_status": null,
+    "nxdomain": false,
+    "service": "Superdocu",
+    "status": "Unknown",
+    "vulnerable": true
+  },
+  {
+    "cname": [".typepad.com"],
+    "discussion": "",
+    "documentation": "https://help.typepad.com/verify_cname.html",
+    "fingerprint": [],
+    "http_status": null,
+    "nxdomain": false,
+    "service": "Typepad",
+    "status": "Unknown",
+    "vulnerable": true
+  },
+  {
+    "cname": ["cdrapplication.secureserver.net"],
+    "discussion": "",
+    "documentation": "https://help.typepad.com/verify_cname.html",
+    "fingerprint": [],
+    "http_status": null,
+    "nxdomain": false,
+    "service": "Typepad",
+    "status": "Unknown",
+    "vulnerable": true
   }
 ]
