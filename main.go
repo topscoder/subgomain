@@ -18,6 +18,7 @@ func main() {
 	domain := flag.String("domain", "", "A single domain to be checked")
 	domainsFile := flag.String("domains", "", "The file containing the domains to be checked")
 	fingerprintsArg := flag.String("fingerprints", "", "URL or local file path to the fingerprints.json file to be used")
+	resolversArg := flag.String("resolvers", "", "URL to the resolvers.txt file to be used")
 	threads := flag.Int("threads", 5, "The amount of threads to be used")
 	timeout := flag.Int("timeout", 2, "Timeout in seconds for HTTP requests")
 	silent := flag.Bool("silent", false, "Only print vulnerable domains")
@@ -49,11 +50,17 @@ func main() {
 		os.Exit(1)
 	}
 
-	var resolversUrl = "https://raw.githubusercontent.com/trickest/resolvers/main/resolvers.txt"
+	// Load resolvers
+	resolversFile := ""
+	if *resolversArg != "" {
+		resolversFile = *resolversArg
+	} else {
+		resolversFile = "https://raw.githubusercontent.com/trickest/resolvers/main/resolvers.txt"
+	}
 
-	logger.LogDebug("Downloading resolvers list from ", resolversUrl)
+	logger.LogDebug("Downloading resolvers list from ", resolversFile)
 
-	resolvers, err := utils.LoadResolvers(resolversUrl)
+	resolvers, err := utils.LoadResolvers(resolversFile)
 	if err != nil {
 		fmt.Printf("Error loading resolvers: %v\n", err)
 		os.Exit(1)
