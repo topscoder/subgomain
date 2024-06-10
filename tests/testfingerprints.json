@@ -1660,7 +1660,9 @@
     "status": "Vulnerable",
     "discussion": "",
     "documentation": "Match on A/AAAA records. Find out if an additional fingerprint is needed.",
-    "fingerprint": [],
+    "fingerprint": [
+      "Fastly error: unknown domain"
+    ],
     "http_status": null,
     "False_Positive": [""]
   },

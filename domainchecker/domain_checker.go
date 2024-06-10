@@ -56,11 +56,21 @@ func CheckDomain(domain string, fingerprints []fingerprints.Fingerprint, resolve
 	logger.LogDebug("[%s] Checking domain", domain)
 	logger.LogDebug("[%s] Using resolver: %s", domain, resolverAddress)
 
+	// Fetch CNAME
 	cname, cnameErr := resolver.LookupCNAME(ctx, domain)
+	if cnameErr != nil {
+		logger.LogDebug("[%s] Error fetching CNAME: %s", domain, cnameErr)
+	} else {
+		logger.LogDebug("[%s] Fetched CNAME: %s", domain, cname)
+	}
 
-	logger.LogDebug("[%s] Fetched CNAME: %s", domain, cname)
-
+	// Fetch IP's (A/AAAA records)
 	ips, aRecordErr := resolver.LookupIP(ctx, "ip", domain)
+	if aRecordErr != nil {
+		logger.LogDebug("[%s] Error fetching IP's: %s", domain, aRecordErr)
+	} else {
+		logger.LogDebug("[%s] Fetched IP's: %s", domain, ips)
+	}
 
 	// Create a custom HTTP transport that skips SSL/TLS certificate verification
 	tr := &http.Transport{
@@ -122,7 +132,7 @@ func CheckDomain(domain string, fingerprints []fingerprints.Fingerprint, resolve
 					if aRecord != "" {
 						logger.LogDebug("[%s] - Finding A record: %s", domain, aRecord)
 						for _, ip := range ips {
-							if aRecord == ip.String() {
+							if aRecord != "" && strings.Contains(ip.String(), aRecord) {
 								logger.LogDebug("[%s] [MATCH] - Matched A record: %s", domain, aRecord)
 								matchedARecord = true
 								break
