@@ -1660,9 +1660,18 @@
     "status": "Vulnerable",
     "discussion": "",
     "documentation": "Match on A/AAAA records. Find out if an additional fingerprint is needed.",
-    "fingerprint": [
-      "Fastly error: unknown domain"
-    ],
+    "fingerprint": ["Fastly error: unknown domain"],
+    "http_status": null,
+    "False_Positive": [""]
+  },
+  {
+    "service": "Fastly (text fingerprint match)",
+    "a": [],
+    "cname": [],
+    "status": "Vulnerable",
+    "discussion": "",
+    "documentation": "Match on fingerprint. Find out if an additional fingerprint is needed.",
+    "fingerprint": ["Fastly error: unknown domain"],
     "http_status": null,
     "False_Positive": [""]
   },
