@@ -31,7 +31,7 @@ func rotateResolver(resolvers []string) string {
 }
 
 // CheckDomain checks if the given domain is vulnerable based on the fingerprints.
-func CheckDomain(domain string, fingerprints []fingerprints.Fingerprint, resolvers []string, httpTimeout time.Duration) (bool, *fingerprints.Fingerprint, error) {
+func CheckDomain(domain string, fingerprints []fingerprints.Fingerprint, resolvers []string, httpTimeout time.Duration) (string, *fingerprints.Fingerprint, error) {
 
 	// Initialize ResolverIndex with a random value on the first call
 	if ResolverIndex == 0 {
@@ -103,9 +103,9 @@ func CheckDomain(domain string, fingerprints []fingerprints.Fingerprint, resolve
 		// we have a possible subdomain takeover vulnerability.
 		logger.LogDebug("[%s] Matching fingerprint for service: %s", domain, fp.Service)
 
-		matchedCname := false
-		matchFingerprint := false
-		matchedARecord := false
+		matchedCname := ""
+		matchFingerprint := ""
+		matchedARecord := ""
 
 		if len(fp.CNAME) > 0 {
 			// This fingerprint requires a matching CNAME indicator
@@ -114,13 +114,13 @@ func CheckDomain(domain string, fingerprints []fingerprints.Fingerprint, resolve
 					logger.LogDebug("[%s] - Finding CNAME record: %s", domain, cnameEntry)
 					if cnameEntry != "" && strings.Contains(cname, cnameEntry) {
 						logger.LogDebug("[%s] [MATCH] - Matched CNAME record: %s", domain, cnameEntry)
-						matchedCname = true
+						matchedCname = cname
 						break
 					}
 				}
 			}
 
-			if !matchedCname {
+			if matchedCname == "" {
 				continue
 			}
 		}
@@ -134,7 +134,7 @@ func CheckDomain(domain string, fingerprints []fingerprints.Fingerprint, resolve
 						for _, ip := range ips {
 							if aRecord != "" && strings.Contains(ip.String(), aRecord) {
 								logger.LogDebug("[%s] [MATCH] - Matched A record: %s", domain, aRecord)
-								matchedARecord = true
+								matchedARecord = ip.String()
 								break
 							}
 						}
@@ -142,7 +142,7 @@ func CheckDomain(domain string, fingerprints []fingerprints.Fingerprint, resolve
 				}
 			}
 
-			if !matchedARecord {
+			if matchedARecord == "" {
 				continue
 			}
 		}
@@ -153,20 +153,20 @@ func CheckDomain(domain string, fingerprints []fingerprints.Fingerprint, resolve
 				logger.LogDebug("[%s] - Finding fingerprint string: %s", domain, fingerprint)
 				if fingerprint != "" && strings.Contains(string(responseBody), fingerprint) {
 					logger.LogDebug("[%s] [MATCH] - Matched fingerprint string: %s", domain, fingerprint)
-					matchFingerprint = true
+					matchFingerprint = fingerprint
 					break
 				}
 			}
 
-			if !matchFingerprint {
+			if matchFingerprint == "" {
 				continue
 			}
 		}
 
-		if matchedCname || matchedARecord || matchFingerprint {
-			return true, &fp, nil
+		if matchedCname != "" || matchedARecord != "" || matchFingerprint != "" {
+			return "CNAME: " + matchedCname + " | A: " + matchedARecord + " | Fingerprint: " + matchFingerprint, &fp, nil
 		}
 	}
 
-	return false, nil, nil
+	return "", nil, nil
 }

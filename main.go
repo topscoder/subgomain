@@ -106,8 +106,8 @@ func main() {
 					continue
 				}
 
-				if vulnerable && (fingerprint.Vulnerable || fingerprint.Status == "Vulnerable") {
-					fmt.Printf("[VULNERABLE] [%s] %s \n", fingerprint.Service, domain)
+				if vulnerable != "" && (fingerprint.Vulnerable || fingerprint.Status == "Vulnerable") {
+					fmt.Printf("[VULNERABLE] [%s] %s -> %s \n", fingerprint.Service, domain, vulnerable)
 				} else {
 					if !*silent {
 						fmt.Printf("[NOT VULNERABLE] %s\n", domain)
