@@ -1648,7 +1648,11 @@
     "documentation": "Match on A/AAAA records. Find out if an additional fingerprint is needed.",
     "fingerprint": ["Fastly error: unknown domain"],
     "http_status": null,
-    "False_Positive": [""]
+    "False_Positive": [
+      ".twimg.com",
+      ".dyson.hk",
+      ".mundi.com.br"
+    ]
   },
   {
     "service": "Fastly (text fingerprint match)",
