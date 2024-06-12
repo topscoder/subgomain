@@ -1248,17 +1248,6 @@
     "False_Positive": [""]
   },
   {
-    "cname": ["activehosted.com"],
-    "discussion": "",
-    "documentation": "",
-    "fingerprint": "alt=\"LIGHTTPD - fly light.\"",
-    "http_status": null,
-    "service": "ActiveCampaign",
-    "status": "Vulnerable",
-    "vulnerable": true,
-    "False_Positive": [""]
-  },
-  {
     "cname": ["endpoint.mykajabi.com"],
     "discussion": "",
     "documentation": "https://pastes.io/ik2rhibj6m",
@@ -1648,11 +1637,7 @@
     "documentation": "Match on A/AAAA records. Find out if an additional fingerprint is needed.",
     "fingerprint": ["Fastly error: unknown domain"],
     "http_status": null,
-    "False_Positive": [
-      ".twimg.com",
-      ".dyson.hk",
-      ".mundi.com.br"
-    ]
+    "False_Positive": [".twimg.com", ".dyson.hk", ".mundi.com.br"]
   },
   {
     "service": "Fastly (text fingerprint match)",
@@ -1794,10 +1779,7 @@
     "vulnerable": true,
     "discussion": "",
     "documentation": "Match on A/AAAA records. Find out if an additional fingerprint is needed.",
-    "fingerprint": [
-      "Site is frozen",
-      "The page could not be loaded properly"
-    ],
+    "fingerprint": ["Site is frozen", "The page could not be loaded properly"],
     "http_status": null,
     "False_Positive": [""]
   },
@@ -2210,6 +2192,72 @@
     "http_status": null,
     "nxdomain": false,
     "service": "Typepad",
+    "status": "Unknown",
+    "vulnerable": true
+  },
+  {
+    "cname": ["ssl-client.presspage.com"],
+    "discussion": "",
+    "documentation": "https://help.presspage.com/hc/en-us/articles/360003422672-How-to-integrate-the-Newsroom-with-your-website",
+    "fingerprint": [],
+    "http_status": null,
+    "nxdomain": false,
+    "service": "Presspage",
+    "status": "Unknown",
+    "vulnerable": true
+  },
+  {
+    "cname": [".teachable.com"],
+    "discussion": "",
+    "documentation": "https://support.teachable.com/hc/en-us/articles/115000449711-Custom-Subdomains#creating-a-subdomain-0-1",
+    "fingerprint": [],
+    "http_status": null,
+    "nxdomain": false,
+    "service": "Teachable",
+    "status": "Unknown",
+    "vulnerable": true
+  },
+  {
+    "cname": ["squeeze.gr8.com"],
+    "discussion": "",
+    "documentation": "https://www.getresponse.com/help/how-do-i-add-a-cname-entry-to-my-subdomain.html",
+    "fingerprint": [],
+    "http_status": null,
+    "nxdomain": false,
+    "service": "GetResponse",
+    "status": "Unknown",
+    "vulnerable": true
+  },
+  {
+    "cname": [".moosend.com"],
+    "discussion": "",
+    "documentation": "https://docs.moosend.com/users/moosend/en/set-up-a-cname-for-different-providers.html",
+    "fingerprint": [],
+    "http_status": null,
+    "nxdomain": false,
+    "service": "Moosend",
+    "status": "Unknown",
+    "vulnerable": true
+  },
+  {
+    "cname": [".pagescdn.com"],
+    "discussion": "",
+    "documentation": "https://hitchhikers.yext.com/guides/create-search-results-guide/02-subdomain/",
+    "fingerprint": [],
+    "http_status": null,
+    "nxdomain": false,
+    "service": "Yext",
+    "status": "Unknown",
+    "vulnerable": true
+  },
+  {
+    "cname": [".jotform.com"],
+    "discussion": "",
+    "documentation": "https://www.jotform.com/help/144-how-to-use-custom-domains-with-jotform-enterprise/",
+    "fingerprint": [],
+    "http_status": null,
+    "nxdomain": false,
+    "service": "Jotform",
     "status": "Unknown",
     "vulnerable": true
   }
