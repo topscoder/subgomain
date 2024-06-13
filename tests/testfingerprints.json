@@ -1726,7 +1726,8 @@
       "Looks Like You're Lost"
     ],
     "http_status": null,
-    "False_Positive": [""]
+    "False_Positive": [""],
+    "payment_required": true
   },
   {
     "service": "Landingi",
@@ -1785,10 +1786,13 @@
     "discussion": "",
     "documentation": "",
     "fingerprint": [
-      "The gods are wise, but do not know of the site which you seek."
+      "The gods are wise, but do not know of the site which you seek.",
+      "Site is frozen",
+      "The page could not be loaded properly"
     ],
     "http_status": null,
-    "False_Positive": [""]
+    "False_Positive": [""],
+    "payment_required": true
   },
   {
     "service": "Pantheon",
@@ -1798,9 +1802,14 @@
     "vulnerable": true,
     "discussion": "",
     "documentation": "Match on A/AAAA records. Find out if an additional fingerprint is needed.",
-    "fingerprint": ["Site is frozen", "The page could not be loaded properly"],
+    "fingerprint": [
+      "The gods are wise, but do not know of the site which you seek.",
+      "Site is frozen",
+      "The page could not be loaded properly"
+    ],
     "http_status": null,
-    "False_Positive": [""]
+    "False_Positive": [""],
+    "payment_required": true
   },
   {
     "service": "Pingdom",
