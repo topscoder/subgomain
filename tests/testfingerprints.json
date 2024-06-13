@@ -2199,7 +2199,9 @@
     "cname": [".typepad.com"],
     "discussion": "",
     "documentation": "https://help.typepad.com/verify_cname.html",
-    "fingerprint": [],
+    "fingerprint": [
+      "Cloudflare is currently unable to resolve your requested domain"
+    ],
     "http_status": null,
     "nxdomain": false,
     "service": "Typepad",
@@ -2232,7 +2234,9 @@
     "cname": [".teachable.com"],
     "discussion": "",
     "documentation": "https://support.teachable.com/hc/en-us/articles/115000449711-Custom-Subdomains#creating-a-subdomain-0-1",
-    "fingerprint": [],
+    "fingerprint": [
+      "The page you are looking for doesn&#x27;t exist or has been moved."
+    ],
     "http_status": null,
     "nxdomain": false,
     "service": "Teachable",
