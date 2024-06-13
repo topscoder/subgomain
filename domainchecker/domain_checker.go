@@ -97,6 +97,14 @@ func CheckDomain(domain string, fingerprints []fingerprints.Fingerprint, resolve
 	}
 
 	for _, fp := range fingerprints {
+
+		// Skip fingerprints that are not vulnerable to takeover
+		// to speedup the scanning process a bit
+		if !fp.Vulnerable {
+			logger.LogDebug("Skip fingerprint for %s (NOT VULNERABLE)", fp.Service)
+			continue
+		}
+
 		// Loop through all of the fingerprints
 		// And match the indicators.
 		// If all required indicators are matched,
