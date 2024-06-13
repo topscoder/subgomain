@@ -390,7 +390,7 @@
     "cname": ["statuspage.betteruptime.com"],
     "discussion": "https://github.com/EdOverflow/can-i-take-over-xyz/issues/368",
     "documentation": "https://betterstack.com/docs/uptime/custom-subdomain/",
-    "fingerprint": [],
+    "fingerprint": ["You are being <a href=\"https://uptime.betterstack.com\">redirected</a>"],
     "http_status": 302,
     "nxdomain": false,
     "service": "Better Uptime",
@@ -817,14 +817,6 @@
     "False_Positive": [""],
     "status": "Vulnerable",
     "vulnerable": true
-  },
-  {
-    "service": "Landingi",
-    "status": "Vulnerable",
-    "fingerprint": "It looks like you\u2019re lost...",
-    "discussion": "https://github.com/EdOverflow/can-i-take-over-xyz/issues/117",
-    "documentation": "",
-    "False_Positive": [""]
   },
   {
     "service": "LaunchRock",
@@ -1487,17 +1479,6 @@
     "False_Positive": [""]
   },
   {
-    "cname": ["statuspage.betteruptime.com"],
-    "discussion": "https://github.com/EdOverflow/can-i-take-over-xyz/issues/368",
-    "documentation": "https://betterstack.com/docs/uptime/custom-subdomain/",
-    "fingerprint": [],
-    "http_status": 302,
-    "service": "Better Uptime",
-    "status": "Vulnerable",
-    "vulnerable": true,
-    "False_Positive": [""]
-  },
-  {
     "cname": [".amazoncognito.com"],
     "discussion": "https://github.com/EdOverflow/can-i-take-over-xyz/issues/358",
     "documentation": "https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-app-integration.html",
@@ -1655,10 +1636,11 @@
     "status": "Vulnerable",
     "vulnerable": true,
     "discussion": "",
-    "documentation": "",
+    "documentation": "https://help.frontify.com/en/articles/1080236-set-up-a-custom-subdomain",
     "fingerprint": [],
-    "http_status": null,
-    "False_Positive": [""]
+    "http_status": 204,
+    "False_Positive": [""],
+    "payment_required": true
   },
   {
     "service": "GetResponse",
@@ -1734,9 +1716,11 @@
     "cname": ["cname.landingi.com"],
     "status": "Vulnerable",
     "vulnerable": true,
-    "discussion": "",
-    "documentation": "",
-    "fingerprint": [],
+    "discussion": "https://github.com/EdOverflow/can-i-take-over-xyz/issues/117",
+    "documentation": "https://landingi.com/help/domain-adding-and-configuration/",
+    "fingerprint": [
+      "It looks like you"
+    ],
     "http_status": null,
     "False_Positive": [""]
   },
