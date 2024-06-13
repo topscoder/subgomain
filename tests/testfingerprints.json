@@ -952,11 +952,13 @@
   },
   {
     "service": "Smartling",
+    "cname": [".sl.smartling.com"],
     "status": "Vulnerable",
     "fingerprint": "Domain is not configured",
     "discussion": "https://github.com/EdOverflow/can-i-take-over-xyz/issues/67",
     "documentation": "Not available",
-    "False_Positive": [""]
+    "False_Positive": [""],
+    "vulnerable": true
   },
   {
     "service": "Smugsmug",
@@ -1857,17 +1859,6 @@
     "discussion": "",
     "documentation": "",
     "fingerprint": ["This domain is not configured on Short.io"],
-    "http_status": null,
-    "False_Positive": [""]
-  },
-  {
-    "service": "Smartling",
-    "cname": ["smartling.com"],
-    "status": "Vulnerable",
-    "vulnerable": true,
-    "discussion": "",
-    "documentation": "",
-    "fingerprint": [],
     "http_status": null,
     "False_Positive": [""]
   },
