@@ -2214,8 +2214,10 @@
     "cname": ["ssl-client.presspage.com"],
     "discussion": "",
     "documentation": "https://help.presspage.com/hc/en-us/articles/360003422672-How-to-integrate-the-Newsroom-with-your-website",
-    "fingerprint": [],
-    "http_status": 302,
+    "fingerprint": [
+      "Domain recognized"
+    ],
+    "http_status": null,
     "nxdomain": false,
     "service": "Presspage",
     "status": "Unknown",
