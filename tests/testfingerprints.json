@@ -1041,7 +1041,11 @@
   },
   {
     "service": "Unbounce",
-    "fingerprint": "The requested URL was not found on this server",
+    "cname": ["unbouncepages.com"],
+    "fingerprint": [
+      "The requested URL was not found on this server",
+      "Cloudflare is currently unable to resolve your requested domain"
+    ],
     "discussion": "https://github.com/EdOverflow/can-i-take-over-xyz/issues/11",
     "documentation": "Not available",
     "False_Positive": ["That’s all we know."],
@@ -1893,17 +1897,6 @@
   {
     "service": "Tumblr",
     "cname": ["domains.tumblr.com"],
-    "status": "Vulnerable",
-    "vulnerable": true,
-    "discussion": "",
-    "documentation": "",
-    "fingerprint": [],
-    "http_status": null,
-    "False_Positive": [""]
-  },
-  {
-    "service": "Unbounce",
-    "cname": ["unbouncepages.com"],
     "status": "Vulnerable",
     "vulnerable": true,
     "discussion": "",
