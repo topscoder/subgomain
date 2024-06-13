@@ -1068,14 +1068,6 @@
     "vulnerable": false
   },
   {
-    "service": "Vercel",
-    "status": "Vulnerable",
-    "fingerprint": "DEPLOYMENT_NOT_FOUND.",
-    "discussion": "https://github.com/EdOverflow/can-i-take-over-xyz/issues/183",
-    "documentation": "https://vercel.com/docs/concepts/projects/domains/add-a-domain",
-    "False_Positive": [""]
-  },
-  {
     "service": "Webflow",
     "cname": ["proxy.webflow.com", "proxy-ssl.webflow.com"],
     "status": "Vulnerable",
@@ -1950,9 +1942,9 @@
     "cname": [".vercel.com", "cname.vercel-dns.com"],
     "status": "Vulnerable",
     "vulnerable": true,
-    "discussion": "",
-    "documentation": "",
-    "fingerprint": [],
+    "discussion": "https://github.com/EdOverflow/can-i-take-over-xyz/issues/183",
+    "documentation": "https://vercel.com/docs/concepts/projects/domains/add-a-domain",
+    "fingerprint": ["DEPLOYMENT_NOT_FOUND"],
     "http_status": null,
     "False_Positive": [""]
   },
@@ -1962,9 +1954,9 @@
     "cname": [],
     "status": "Vulnerable",
     "vulnerable": true,
-    "discussion": "",
-    "documentation": "Match on A/AAAA records. Find out if an additional fingerprint is needed.",
-    "fingerprint": [],
+    "discussion": "https://github.com/EdOverflow/can-i-take-over-xyz/issues/183",
+    "documentation": "https://vercel.com/docs/concepts/projects/domains/add-a-domain",
+    "fingerprint": ["DEPLOYMENT_NOT_FOUND"],
     "http_status": null,
     "False_Positive": [""]
   },
