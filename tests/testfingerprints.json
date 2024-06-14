@@ -536,7 +536,8 @@
     "nxdomain": false,
     "service": "GetCloudApp",
     "status": "Vulnerable",
-    "vulnerable": true
+    "vulnerable": true,
+    "payment_required": true
   },
   {
     "cname": [
@@ -1000,7 +1001,11 @@
     "vulnerable": true,
     "discussion": "",
     "documentation": "https://docs.mashery.com/manage/GUID-47344B82-3DD8-47BF-83F6-D269C0FBC3EB.html",
-    "fingerprint": [],
+    "fingerprint": [
+      "Service Not Found",
+      "Service Requires SSL",
+      "Unrecognized domain"
+    ],
     "http_status": 302,
     "False_Positive": [""]
   },
