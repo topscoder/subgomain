@@ -10,13 +10,14 @@ import (
 
 // Fingerprint represents a single fingerprint entry.
 type Fingerprint struct {
-	CNAME       []string `json:"cname"`
-	A           []string `json:"a"`
-	Fingerprint []string `json:"-"`
-	HTTPStatus  *int     `json:"http_status"`
-	Service     string   `json:"service"`
-	Status      string   `json:"status"`
-	Vulnerable  bool     `json:"vulnerable"`
+	CNAME           []string `json:"cname"`
+	A               []string `json:"a"`
+	Fingerprint     []string `json:"-"`
+	HTTPStatus      *int     `json:"http_status"`
+	Service         string   `json:"service"`
+	Status          string   `json:"status"`
+	Vulnerable      bool     `json:"vulnerable"`
+	PaymentRequired bool     `json:"payment_required"`
 }
 
 // UnmarshalJSON handles the custom unmarshalling of the Fingerprint struct.
