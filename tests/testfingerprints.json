@@ -477,16 +477,6 @@
     "vulnerable": true
   },
   {
-    "cname": [".s3.amazonaws.com"],
-    "service": "AWS S3 Bucket",
-    "fingerprint": "The specified bucket does not exist",
-    "discussion": "https://github.com/EdOverflow/can-i-take-over-xyz/issues/36",
-    "documentation": "Not available",
-    "False_Positive": [""],
-    "status": "Vulnerable",
-    "vulnerable": true
-  },
-  {
     "cname": [".elasticbeanstalk.com"],
     "service": "AWS Elastic Beanstalk",
     "fingerprint": [],
@@ -499,6 +489,8 @@
   },
   {
     "cname": [
+      ".s3.amazonaws.com",
+
       ".s3-accelerate.amazonaws.com",
       ".s3-accelerate.dualstack.amazonaws.com",
 
@@ -554,9 +546,11 @@
       ".s3.gov-west-1.amazonaws.com",
       ".s3.gov-east-1.amazonaws.com"
     ],
-    "service": "AWS",
-    "fingerprint": [],
-    "discussion": "",
+    "service": "AWS S3",
+    "fingerprint": [
+      "The specified bucket does not exist"
+    ],
+    "discussion": "https://github.com/EdOverflow/can-i-take-over-xyz/issues/36",
     "documentation": "https://www.stratussecurity.com/post/aws-subdomain-takeover-guide",
     "False_Positive": [""],
     "status": "Vulnerable",
