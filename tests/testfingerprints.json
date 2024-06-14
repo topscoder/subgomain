@@ -1015,26 +1015,21 @@
     "vulnerable": true
   },
   {
-    "service": "Netlify (Fingerprint)",
-    "status": "Vulnerable",
-    "fingerprint": "Not Found - Request ID:",
-    "discussion": "https://github.com/EdOverflow/can-i-take-over-xyz/issues/40",
-    "documentation": "",
-    "False_Positive": [""]
-  },
-  {
-    "service": "Netlify (CNAME)",
+    "service": "Netlify",
     "cname": [
       "cname.netlify.app",
       "cname.netlify.com",
       "netlify.com",
-      "netlify.app"
+      ".netlify.app",
+      "netlifyglobalcdn.com"
     ],
-    "status": "Vulnerable",
+    "status": "Edge Case",
     "vulnerable": true,
-    "discussion": "",
-    "documentation": "",
-    "fingerprint": [],
+    "discussion": "https://github.com/EdOverflow/can-i-take-over-xyz/issues/40",
+    "documentation": "https://docs.netlify.com/domains-https/custom-domains/configure-external-dns/",
+    "fingerprint": [
+      "Not Found - Request ID"
+    ],
     "http_status": null,
     "False_Positive": [""]
   },
