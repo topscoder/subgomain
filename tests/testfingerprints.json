@@ -26,10 +26,14 @@
     "vulnerable": true
   },
   {
-    "cname": ["ideas.aha.io"],
+    "cname": [".ideas.aha.io"],
     "discussion": "",
-    "documentation": "",
-    "fingerprint": "There is no portal here ... sending you back to Aha!",
+    "documentation": "https://www.aha.io/support/roadmaps/strategic-roadmaps/ideas/customize-ideas-portal-url-cname",
+    "fingerprint": [
+      "There may be no portal at this address, or a temporary problem is preventing the portal from loading",
+      "There is no portal here ... sending you back to Aha!",
+      "Unable to load ideas portal"
+    ],
     "http_status": null,
     "nxdomain": false,
     "service": "Aha",
@@ -51,10 +55,21 @@
     "vulnerable": true
   },
   {
-    "cname": ["brightcovegallery.com", "gallery.video", "bcvp0rtal.com"],
+    "cname": [
+      "brightcovegallery.com",
+      "gallery.video",
+      "bcvp0rtal.com",
+      "brightcoveengage.video"
+    ],
     "discussion": "",
-    "documentation": "",
-    "fingerprint": "<p class=\"bc-gallery-error-code\">Error Code: 404</p>",
+    "documentation": [
+      "https://engage.support.brightcove.com/experiences/configuring-custom-domains-and-ssl.html",
+      "https://gallery.support.brightcove.com/settings/configuring-custom-domains-and-ssl.html"
+    ],
+    "fingerprint": [
+      "Sorry, we can't find the page you requested. Return to the ",
+      "<p class=\"bc-gallery-error-code\">Error Code: 404</p>"
+    ],
     "http_status": null,
     "nxdomain": false,
     "service": "Brightcove",
@@ -73,7 +88,8 @@
     "nxdomain": false,
     "service": "Big Cartel (Fingerprint)",
     "status": "Vulnerable",
-    "vulnerable": true
+    "vulnerable": true,
+    "payment_required": null
   },
   {
     "cname": [".bigcartel.com"],
@@ -83,16 +99,22 @@
     "http_status": null,
     "nxdomain": false,
     "service": "Big Cartel",
-    "status": "Unknown",
+    "status": "Vulnerable",
     "vulnerable": true,
     "payment_required": null
   },
   {
     "cname": ["simplebooklet.com"],
     "discussion": "",
-    "documentation": "",
-    "fingerprint": "We can't find this <a href=\"https://simplebooklet.com",
-    "shodan_query": "http.html:simplebooklet.com http.html:\"We can't find this\"",
+    "documentation": "https://docs.simplebooklet.com/en/article/custom-domains-and-cloudflare-1gne661/",
+    "fingerprint": [
+      "The link to this Simplebooklet may have changed",
+      "We can't find this <a href=\"https://simplebooklet.com"
+    ],
+    "shodan_query": [
+      "http.html:simplebooklet.com http.html:\"We can't find this\"",
+      "http.html:simplebooklet.com http.html:\"The link to this Simplebooklet may have changed\""
+    ],
     "http_status": null,
     "nxdomain": false,
     "service": "SimpleBooklet",
@@ -100,33 +122,54 @@
     "vulnerable": true
   },
   {
-    "cname": ["vendecommerce.com"],
-    "discussion": "",
-    "documentation": "",
-    "fingerprint": "Looks like you've traveled too far into cyberspace.",
+    "cname": [
+      "vendecommerce.com",
+      ".shops.webshopapp.com",
+      ".shoplightspeed.com"
+    ],
+    "discussion": "Probably not vulnerable as CNAME contains unique shop number.",
+    "documentation": "https://ecom-support.lightspeedhq.com/hc/nl/articles/360024199813-Je-domein-koppelen-DNS-records-instellen",
+    "fingerprint": ["Looks like you've traveled too far into cyberspace."],
     "http_status": null,
     "nxdomain": false,
-    "service": "Vend",
-    "status": "Vulnerable",
+    "service": "Lightspeed (CNAME)",
+    "status": "Unknown",
+    "vulnerable": true
+  },
+  {
+    "a": ["104.16.8.49", "104.17.156.30", "162.159.129.85", "162.159.130.85"],
+    "discussion": "",
+    "documentation": "https://ecom-support.lightspeedhq.com/hc/nl/articles/360024199813-Je-domein-koppelen-DNS-records-instellen",
+    "fingerprint": [],
+    "http_status": null,
+    "nxdomain": false,
+    "service": "Lightspeed (A-record)",
+    "status": "Unknown",
     "vulnerable": true
   },
   {
     "cname": ["-portal.apigee.net"],
     "discussion": "",
-    "documentation": "",
+    "documentation": "Looks like Apigee is migrated to Google Cloud. ",
     "fingerprint": [],
     "http_status": null,
     "nxdomain": true,
     "service": "Apigee",
-    "status": "Vulnerable",
+    "status": "Unknown",
     "vulnerable": true
   },
   {
-    "cname": ["activehosted.com"],
+    "cname": ["activehosted.com", "managed-cname-fallback.activehosted.com"],
     "discussion": "",
-    "documentation": "",
-    "fingerprint": "alt=\"LIGHTTPD - fly light.\"",
-    "shodan_query": "http.html:\"LIGHTTPD - fly light\" ssl.cert.subject.cn:activehosted.com",
+    "documentation": "https://help.activecampaign.com/hc/en-us/articles/207331210-How-do-I-set-up-a-custom-domain-name-CNAME-in-ActiveCampaign",
+    "fingerprint": [
+      "Cloudflare is currently unable to resolve your requested domain",
+      "alt=\"LIGHTTPD - fly light.\""
+    ],
+    "shodan_query": [
+      "http.html:\"LIGHTTPD - fly light\" ssl.cert.subject.cn:activehosted.com",
+      "http.html:\"Cloudflare is currently unable to resolve your requested domain\" ssl.cert.subject.cn:activehosted.com"
+    ],
     "http_status": null,
     "nxdomain": false,
     "service": "ActiveCampaign",
@@ -134,10 +177,13 @@
     "vulnerable": true
   },
   {
-    "cname": ["endpoint.mykajabi.com"],
-    "discussion": "",
-    "documentation": "https://pastes.io/ik2rhibj6m",
-    "fingerprint": "<h1>The page you were looking for doesn't exist.</h1>",
+    "cname": ["endpoint.mykajabi.com", "ssl.kajabi.com"],
+    "discussion": "https://pastes.io/ik2rhibj6m",
+    "documentation": "https://help.kajabi.com/hc/en-us/articles/1260801313510-How-to-Connect-a-Custom-Domain",
+    "fingerprint": [
+      "Cloudflare is currently unable to resolve your requested domain",
+      "<h1>The page you were looking for doesn't exist.</h1>"
+    ],
     "http_status": null,
     "nxdomain": false,
     "service": "Kajabi",
@@ -145,22 +191,39 @@
     "vulnerable": true
   },
   {
-    "cname": ["custom-proxy.leadpages.net", "leadpages.net"],
+    "cname": ["custom-proxy.leadpages.net"],
     "discussion": "",
-    "documentation": "",
-    "fingerprint": "Double check that you have the right web address and give it another go!</p>",
+    "documentation": "https://support.leadpages.com/hc/en-us/articles/218820517-Connect-your-domain#subdomain",
+    "fingerprint": [
+      "This page couldn't be found, so let's get you turned around!",
+      "Double check that you have the right web address and give it another go!</p>"
+    ],
     "http_status": null,
     "nxdomain": false,
-    "service": "LeadPages.com",
+    "service": "LeadPages.com (CNAME)",
     "status": "Vulnerable",
     "vulnerable": true
   },
   {
-    "cname": ["proposify.biz"],
+    "a": ["35.202.21.90"],
     "discussion": "",
-    "documentation": "",
-    "fingerprint": "If you need immediate assistance, please contact <a href=\"mailto:support@proposify.biz",
-    "shodan_query": "http.html:\"If you need immediate assistance, please contact\" http.html:\"proposify\"",
+    "documentation": "https://support.leadpages.com/hc/en-us/articles/218820517-Connect-your-domain#subdomain",
+    "fingerprint": [
+      "This page couldn't be found, so let's get you turned around!",
+      "Double check that you have the right web address and give it another go!</p>"
+    ],
+    "http_status": null,
+    "nxdomain": false,
+    "service": "LeadPages.com (A-record)",
+    "status": "Vulnerable",
+    "vulnerable": true
+  },
+  {
+    "cname": ["ssl.proposify.com"],
+    "discussion": "",
+    "documentation": "https://support.proposify.com/hc/en-us/articles/4845630480283-Branded-URL",
+    "fingerprint": [],
+    "shodan_query": "",
     "http_status": null,
     "nxdomain": false,
     "service": "Proposify",
@@ -180,24 +243,25 @@
     "nxdomain": false,
     "service": "Surveygizmo",
     "status": "Vulnerable",
-    "vulnerable": true
+    "vulnerable": true,
+    "payment_required": true
   },
   {
     "cname": ["clientaccess.tave.com"],
     "discussion": "",
-    "documentation": "",
-    "fingerprint": "<h1>Error 404: Page Not Found</h1>",
-    "http_status": null,
+    "documentation": "https://help.tave.com/en/articles/640307-setting-up-a-custom-domain",
+    "fingerprint": ["Tave Creative Corp"],
+    "http_status": 404,
     "nxdomain": false,
     "service": "Tave",
     "status": "Vulnerable",
     "vulnerable": true
   },
   {
-    "cname": ["thinkific.com"],
+    "cname": [".thinkific.com"],
     "discussion": "",
-    "documentation": "",
-    "fingerprint": "You may have mistyped the address or the page may have moved.",
+    "documentation": "https://support.thinkific.com/hc/en-us/articles/360030360074-Custom-Domains",
+    "fingerprint": [],
     "http_status": null,
     "nxdomain": false,
     "service": "Thinkific",
@@ -206,25 +270,35 @@
   },
   {
     "cname": ["appery.io"],
-    "a": ["35.171.252.37", "107.20.248.61"],
     "discussion": "",
-    "documentation": "",
-    "fingerprint": "This page will be updated automatically when your app is published.",
+    "documentation": "https://blog.appery.io/2024/06/custom-domain-publishing-made-simple-with-appery-io/s",
+    "fingerprint": [],
     "http_status": null,
     "nxdomain": false,
-    "service": "Appery.io",
+    "service": "Appery.io (CNAME)",
     "status": "Vulnerable",
     "vulnerable": true
   },
   {
-    "cname": ["datocms.com"],
+    "a": ["35.171.252.37", "107.20.248.61"],
     "discussion": "",
-    "documentation": "",
-    "fingerprint": "<!doctype html><html><head><meta charset=\"utf-8\"><title>Loading...</title>",
+    "documentation": "https://blog.appery.io/2024/06/custom-domain-publishing-made-simple-with-appery-io/",
+    "fingerprint": [],
+    "http_status": null,
+    "nxdomain": false,
+    "service": "Appery.io (A-record)",
+    "status": "Vulnerable",
+    "vulnerable": true
+  },
+  {
+    "cname": ["datocms.com", "datocms-assets.com"],
+    "discussion": "",
+    "documentation": "https://community.datocms.com/t/custom-subdomain-for-assets/2652/10",
+    "fingerprint": [],
     "http_status": null,
     "nxdomain": false,
     "service": "DatoCMS.com",
-    "status": "Vulnerable",
+    "status": "Unknown",
     "vulnerable": true
   },
   {
@@ -234,20 +308,20 @@
       "hello.wufoo.com",
       "pizzapalace.wufoo.com"
     ],
-    "discussion": "",
+    "discussion": "Cannot find any documentation about CNAME settings for Wufoo...",
     "documentation": "",
     "fingerprint": "Hmmm....something is not right.",
     "http_status": null,
     "nxdomain": false,
     "service": "Wufoo",
-    "status": "Vulnerable",
+    "status": "Unknown",
     "vulnerable": true
   },
   {
-    "cname": ["proxy.sprintful.com", "cname.sprintful.com", "sprintful.com"],
+    "cname": ["proxy.sprintful.com", "cname.sprintful.com"],
     "discussion": "",
-    "documentation": "",
-    "fingerprint": "This domain name does not have a default page configured.",
+    "documentation": "https://support.sprintful.com/article/77-appointment-scheduling-custom-domain-name",
+    "fingerprint": [],
     "http_status": null,
     "nxdomain": false,
     "service": "Sprintful",
@@ -258,7 +332,7 @@
     "cname": ["s1.pagewiz.net"],
     "discussion": "",
     "documentation": "",
-    "fingerprint": ["pagewiz"],
+    "fingerprint": [],
     "http_status": null,
     "nxdomain": false,
     "service": "Pagewiz",
@@ -277,10 +351,13 @@
     "vulnerable": false
   },
   {
-    "cname": ["flexbe.com"],
+    "cname": [".flexbe.com", ".myflexbe.com"],
     "discussion": "",
-    "documentation": "",
-    "fingerprint": ["This domain isn't connected to any <br>account on the"],
+    "documentation": "https://help.flexbe.com/subdomains/",
+    "fingerprint": [
+      "Domain not configured",
+      "This domain isn't connected to any <br>account on the"
+    ],
     "http_status": 404,
     "nxdomain": false,
     "service": "Flexbe",
@@ -290,7 +367,7 @@
   {
     "a": ["3.13.222.255", "3.13.246.91", "3.130.60.26"],
     "discussion": "https://github.com/punk-security/dnsReaper/pull/157",
-    "documentation": "",
+    "documentation": "https://help.convertkit.com/en/articles/8492610-how-to-set-up-a-custom-domain-in-convertkit",
     "fingerprint": [
       "The page you were looking for doesn't exist.",
       "<p id=\"reason\">You may have mistyped the address or the page may have moved.</p>"
@@ -305,7 +382,10 @@
     "cname": ["domains.tribeplatform.com"],
     "discussion": "https://github.com/EdOverflow/can-i-take-over-xyz/issues/286",
     "documentation": "https://community.tribe.so/knowledge-base-2-0/post/custom-domain-GN59yUKKHrgKdBX",
-    "fingerprint": "Community not found",
+    "fingerprint": [
+      "The page you are looking for doesn't exist or has been moved",
+      "Community not found"
+    ],
     "http_status": null,
     "nxdomain": false,
     "service": "Tribe",
@@ -315,9 +395,9 @@
   {
     "cname": ["forms.cs.zohohost.com", "forms.cs.zohohost.eu"],
     "discussion": "https://github.com/punk-security/dnsReaper/pull/105",
-    "documentation": "",
+    "documentation": "Does a 301 redirect to the zoho.com homepage ",
     "fingerprint": [],
-    "http_status": 400,
+    "http_status": 301,
     "nxdomain": false,
     "service": "Zoho Forms",
     "status": "Vulnerable",
@@ -326,9 +406,9 @@
   {
     "cname": ["forms.cs.zohohost.in"],
     "discussion": "https://github.com/punk-security/dnsReaper/pull/105",
-    "documentation": "",
+    "documentation": "Does a 301 redirect to the zoho.com homepage ",
     "fingerprint": [],
-    "http_status": 403,
+    "http_status": 301,
     "nxdomain": false,
     "service": "Zoho Forms India",
     "status": "Vulnerable",
@@ -336,8 +416,8 @@
   },
   {
     "cname": ["brandpad.io"],
-    "discussion": "",
-    "documentation": "https://hackerone.com/reports/1474784",
+    "discussion": "https://hackerone.com/reports/1474784",
+    "documentation": "https://help.brandpad.io/en/articles/1508084-how-to-use-your-own-domain-for-a-guideline",
     "fingerprint": "Sorry, that page doesn't exist",
     "shodan_query": "http.html:\"brandpad\" http.html:\"sorry\"",
     "http_status": null,
@@ -394,7 +474,6 @@
   },
   {
     "cname": [".softr.io"],
-    "a": ["35.158.87.123"],
     "discussion": "https://github.com/EdOverflow/can-i-take-over-xyz/issues/352",
     "documentation": "https://docs.softr.io/custom-domain-and-publishing/9qTmU2Lj8Gnpr1Ue6dEAkX/add-a-custom-domain-to-your-app/93K5bLJN3n91MRo9uRGdAf",
     "fingerprint": [],
@@ -405,11 +484,22 @@
     "vulnerable": true
   },
   {
+    "a": ["35.158.87.123"],
+    "discussion": "https://github.com/EdOverflow/can-i-take-over-xyz/issues/352",
+    "documentation": "https://docs.softr.io/custom-domain-and-publishing/9qTmU2Lj8Gnpr1Ue6dEAkX/add-a-custom-domain-to-your-app/93K5bLJN3n91MRo9uRGdAf",
+    "fingerprint": ["Can't find the application"],
+    "http_status": null,
+    "nxdomain": false,
+    "service": "Softr (A-record)",
+    "status": "Vulnerable",
+    "vulnerable": true
+  },
+  {
     "cname": [".galaxy-ingress.meteor.com"],
     "discussion": "https://github.com/EdOverflow/can-i-take-over-xyz/issues/321",
     "documentation": "https://galaxy-guide.meteor.com/dns.html",
-    "fingerprint": [],
-    "http_status": 404,
+    "fingerprint": ["503 Service Unavailable"],
+    "http_status": null,
     "nxdomain": false,
     "service": "Meteor Cloud (Galaxy)",
     "status": "Vulnerable",
@@ -417,13 +507,23 @@
   },
   {
     "cname": [".easyredir.net"],
+    "discussion": "https://github.com/EdOverflow/can-i-take-over-xyz/issues/285",
+    "documentation": "https://help.easyredir.com/en/articles/450935-configuring-your-dns-for-url-redirects",
+    "fingerprint": [],
+    "http_status": null,
+    "nxdomain": false,
+    "service": "EasyRedir (CNAME)",
+    "status": "Vulnerable",
+    "vulnerable": true
+  },
+  {
     "a": ["13.248.160.137", "76.223.24.124", "75.2.43.150", "99.83.186.106"],
     "discussion": "https://github.com/EdOverflow/can-i-take-over-xyz/issues/285",
     "documentation": "https://help.easyredir.com/en/articles/450935-configuring-your-dns-for-url-redirects",
     "fingerprint": [],
-    "http_status": 404,
+    "http_status": null,
     "nxdomain": false,
-    "service": "EasyRedir",
+    "service": "EasyRedir (A-record)",
     "status": "Vulnerable",
     "vulnerable": true
   },
@@ -432,7 +532,7 @@
     "discussion": "https://github.com/EdOverflow/can-i-take-over-xyz/issues/196",
     "documentation": "https://support.zight.com/hc/en-us/articles/5840762908311-How-do-I-setup-a-branded-URL-custom-domain-and-SSL-HTTPS-",
     "fingerprint": [],
-    "http_status": 301,
+    "http_status": null,
     "nxdomain": false,
     "service": "GetCloudApp",
     "status": "Vulnerable",
@@ -535,7 +635,9 @@
       ".s3.gov-east-1.amazonaws.com"
     ],
     "service": "AWS S3",
-    "fingerprint": ["The specified bucket does not exist"],
+    "fingerprint": [
+      "The specified bucket does not exist"
+    ],
     "discussion": "https://github.com/EdOverflow/can-i-take-over-xyz/issues/36",
     "documentation": "https://www.stratussecurity.com/post/aws-subdomain-takeover-guide",
     "False_Positive": [""],
@@ -545,7 +647,10 @@
   {
     "cname": ["cname.agilecrm.com"],
     "service": "Agile CRM",
-    "fingerprint": "Sorry, this page is no longer available.",
+    "fingerprint": [
+      "No landing page found.",
+      "Sorry, this page is no longer available."
+    ],
     "discussion": "https://github.com/EdOverflow/can-i-take-over-xyz/issues/145",
     "documentation": "",
     "False_Positive": [""],
