@@ -430,7 +430,9 @@
     "cname": ["app.bubble.io"],
     "discussion": "https://github.com/EdOverflow/can-i-take-over-xyz/issues/382",
     "documentation": "https://manual.bubble.io/help-guides/optimizing-an-application/hosting-and-scaling/domain-and-dns",
-    "fingerprint": [],
+    "fingerprint": [
+      "This used to be a Bubble app"
+    ],
     "http_status": 301,
     "nxdomain": false,
     "service": "Bubble.io",
@@ -509,7 +511,9 @@
     "cname": [".easyredir.net"],
     "discussion": "https://github.com/EdOverflow/can-i-take-over-xyz/issues/285",
     "documentation": "https://help.easyredir.com/en/articles/450935-configuring-your-dns-for-url-redirects",
-    "fingerprint": [],
+    "fingerprint": [
+      "www.easyredircdn.com/pages/v2/404-host-not-found.html"
+    ],
     "http_status": null,
     "nxdomain": false,
     "service": "EasyRedir (CNAME)",
@@ -520,7 +524,9 @@
     "a": ["13.248.160.137", "76.223.24.124", "75.2.43.150", "99.83.186.106"],
     "discussion": "https://github.com/EdOverflow/can-i-take-over-xyz/issues/285",
     "documentation": "https://help.easyredir.com/en/articles/450935-configuring-your-dns-for-url-redirects",
-    "fingerprint": [],
+    "fingerprint": [
+      "www.easyredircdn.com/pages/v2/404-host-not-found.html"
+    ],
     "http_status": null,
     "nxdomain": false,
     "service": "EasyRedir (A-record)",
@@ -773,9 +779,11 @@
     "vulnerable": true
   },
   {
-    "cname": ["trydiscourse.com", ".hosted-by-discourse.com"],
     "service": "Discourse",
-    "fingerprint": [],
+    "cname": ["trydiscourse.com", ".hosted-by-discourse.com"],
+    "fingerprint": [
+      "Sorry, the site you are looking for does not exist"
+    ],
     "nxdomain": false,
     "discussion": [
       "https://github.com/EdOverflow/can-i-take-over-xyz/issues/49",
@@ -783,7 +791,7 @@
     ],
     "documentation": "https://meta.discourse.org/t/configure-your-domain-name-for-hosted-discourse/21827",
     "False_Positive": [""],
-    "status": "Unknowns",
+    "status": "Unknown",
     "vulnerable": true
   },
   {
