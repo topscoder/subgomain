@@ -11,6 +11,20 @@
     "vulnerable": true
   },
   {
+    "cname": ["sslproxy.teamwork.com"],
+    "discussion": "",
+    "documentation": "https://support.teamwork.com/projects/general-settings/using-a-custom-domain-name",
+    "fingerprint": [
+      "Couldn't Find That Help Doc Website",
+      "Teamwork.com Custom Domain Proxy"
+    ],
+    "http_status": null,
+    "nxdomain": false,
+    "service": "Teamwork",
+    "status": "Vulnerable",
+    "vulnerable": true
+  },
+  {
     "cname": ["wishpond.com"],
     "discussion": "",
     "documentation": "",
@@ -1161,12 +1175,16 @@
     "cname": ["aftership.com"],
     "discussion": "",
     "documentation": "",
-    "fingerprint": "Oops.</h2><p class=\"text-muted text-tight\">The page you're looking for doesn't exist.",
+    "fingerprint": [
+      "Oops.</h2><p class=\"text-muted text-tight\">The page you're looking for doesn't exist.",
+      "NotFound"
+    ],
     "http_status": null,
     "service": "Aftership",
     "status": "Vulnerable",
     "vulnerable": true,
-    "False_Positive": [""]
+    "False_Positive": [""],
+    "payment_required": true
   },
   {
     "cname": ["ideas.aha.io"],
@@ -1351,14 +1369,21 @@
     "False_Positive": [""]
   },
   {
-    "cname": ["jazzhr.com"],
+    "cname": [
+      "jazzhr.com",
+      ".applytojob.com"
+    ],
     "discussion": "",
     "documentation": "",
-    "fingerprint": "This account no longer active",
+    "fingerprint": [
+      "This account no longer active",
+      "You've likely been routed here accidentally."
+    ],
     "http_status": null,
     "service": "JazzHR",
     "status": "Vulnerable",
-    "False_Positive": [""]
+    "False_Positive": [""],
+    "vulnerable": true
   },
   {
     "cname": [
