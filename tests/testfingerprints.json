@@ -2008,8 +2008,9 @@
     "fingerprint": ["404 Not Found: Requested route"],
     "http_status": 404,
     "nxdomain": false,
-    "status": "Unknown",
-    "vulnerable": true
+    "status": "Edge Case",
+    "vulnerable": true,
+    "payment_required": true
   },
   {
     "service": "Delib",
