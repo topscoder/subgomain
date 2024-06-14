@@ -1111,21 +1111,16 @@
     "vulnerable": false
   },
   {
-    "service": "Shopify (Fingerprint)",
-    "status": "Vulnerable",
-    "fingerprint": "Sorry, this shop is currently unavailable",
-    "discussion": "https://github.com/EdOverflow/can-i-take-over-xyz/issues/32",
-    "documentation": "https://medium.com/@thebuckhacker/how-to-do-55-000-subdomain-takeover-in-a-blink-of-an-eye-a94954c3fc75",
-    "False_Positive": [""]
-  },
-  {
     "service": "Shopify (CNAME)",
     "cname": ["shops.myshopify.com"],
     "status": "Vulnerable",
     "vulnerable": true,
-    "discussion": "",
+    "discussion": "https://github.com/EdOverflow/can-i-take-over-xyz/issues/32",
     "documentation": "https://help.shopify.com/en/manual/domains/add-a-domain/connecting-domains/connect-domain-manual",
-    "fingerprint": [],
+    "fingerprint": [
+      "Sorry, this store is currently unavailable",
+      "Sorry, this shop is currently unavailable"
+    ],
     "http_status": null,
     "False_Positive": [""]
   },
@@ -1139,9 +1134,12 @@
     ],
     "status": "Vulnerable",
     "vulnerable": true,
-    "discussion": "",
+    "discussion": "https://github.com/EdOverflow/can-i-take-over-xyz/issues/32",
     "documentation": "https://help.shopify.com/en/manual/domains/add-a-domain/connecting-domains/connect-domain-manual",
-    "fingerprint": [],
+    "fingerprint": [
+      "Sorry, this store is currently unavailable",
+      "Sorry, this shop is currently unavailable"
+    ],
     "http_status": null,
     "False_Positive": [""]
   },
@@ -1190,9 +1188,9 @@
     "status": "Vulnerable",
     "fingerprint": "Domain is not configured",
     "discussion": "https://github.com/EdOverflow/can-i-take-over-xyz/issues/67",
-    "documentation": "",
+    "documentation": "Account registration only via personal Demo.",
     "False_Positive": [""],
-    "vulnerable": true
+    "vulnerable": false
   },
   {
     "service": "Squarespace",
@@ -1625,21 +1623,15 @@
     "False_Positive": [""]
   },
   {
-    "service": "Pantheon (Fingerprint)",
-    "fingerprint": "404 error unknown site!",
-    "discussion": "https://github.com/EdOverflow/can-i-take-over-xyz/issues/24",
-    "documentation": "https://medium.com/@hussain_0x3c/hostile-subdomain-takeover-using-pantheon-ebf4ab813111",
-    "False_Positive": [""],
-    "status": "Vulnerable",
-    "vulnerable": true
-  },
-  {
     "service": "Pantheon (CNAME)",
     "cname": ["pantheonsite.io"],
     "status": "Vulnerable",
     "vulnerable": true,
-    "discussion": "",
-    "documentation": "",
+    "discussion": [
+      "https://github.com/EdOverflow/can-i-take-over-xyz/issues/24",
+      "https://medium.com/@hussain_0x3c/hostile-subdomain-takeover-using-pantheon-ebf4ab813111"
+    ],
+    "documentation": "https://docs.pantheon.io/guides/launch/configure-dns/",
     "fingerprint": [
       "The gods are wise, but do not know of the site which you seek.",
       "Site is frozen",
