@@ -1248,11 +1248,11 @@
   {
     "cname": ["-portal.apigee.net"],
     "discussion": "",
-    "documentation": "",
+    "documentation": "https://docs.apigee.com/api-platform/publish/portal/custom-domain",
     "fingerprint": [],
     "nxdomain": true,
     "http_status": null,
-    "service": "Apigee",
+    "service": "Apigee Edge",
     "status": "Vulnerable",
     "vulnerable": true,
     "False_Positive": [""]
