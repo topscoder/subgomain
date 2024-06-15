@@ -920,6 +920,7 @@
     "service": "Heroku",
     "cname": [".herokuapp.com", ".herokudns.com"],
     "status": "Vulnerable",
+    "vulnerable": true,
     "fingerprint": [
       "No such app",
       "herokucdn.com/error-pages/no-such-app",
@@ -940,6 +941,7 @@
     ],
     "service": "Intercom",
     "status": "Vulnerable",
+    "vulnerable": true,
     "fingerprint": ["Not found"],
     "http_header": [".intercom.io"],
     "http_status": 404,
@@ -1290,6 +1292,7 @@
   {
     "service": "Tumblr (Fingerprint)",
     "status": "Vulnerable",
+    "vulnerable": true,
     "fingerprint": "Whatever you were looking for doesn't currently exist at this address",
     "discussion": "https://github.com/EdOverflow/can-i-take-over-xyz/issues/240",
     "documentation": "https://www.tumblr.com/docs/en/custom_domains",
@@ -1374,7 +1377,8 @@
     "fingerprint": "Looks Like This Domain Isn't Connected To A Website Yet!.",
     "discussion": "https://github.com/EdOverflow/can-i-take-over-xyz/issues/44b.com/EdOverflow/can-i-take-over-xyz/issues/231",
     "documentation": "",
-    "False_Positive": [""]
+    "False_Positive": [""],
+    "vulnerable": true
   },
   {
     "service": "Wix (CNAME)",
@@ -1524,7 +1528,8 @@
       "Web Site Not Found"
     ],
     "http_status": null,
-    "False_Positive": [""]
+    "False_Positive": [""],
+    "vulnerable": true
   },
   {
     "service": "Canny (CNAME)",
