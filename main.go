@@ -108,7 +108,7 @@ func main() {
 
 				if vulnerable != "" && (fingerprint.Vulnerable || fingerprint.Status == "Vulnerable") {
 					if fingerprint.PaymentRequired {
-						fmt.Printf("[%s] [PAID ACCOUNT] [%s] %s -> %s \n", fingerprint.Status, .Service, domain, vulnerable)
+						fmt.Printf("[%s] [%s] [paid] %s -> %s \n", fingerprint.Status, fingerprint.Service, domain, vulnerable)
 					} else {
 						fmt.Printf("[%s] [%s] %s -> %s \n", fingerprint.Status, fingerprint.Service, domain, vulnerable)
 					}
