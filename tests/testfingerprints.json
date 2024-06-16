@@ -790,7 +790,9 @@
     "cname": [".cdn.digitaloceanspaces.com"],
     "discussion": "",
     "documentation": "https://docs.digitalocean.com/products/spaces/how-to/customize-cdn-endpoint/",
-    "fingerprint": [],
+    "fingerprint": [
+      "Origin DNS error"
+    ],
     "service": "Digital Ocean (Spaces)",
     "status": "Unknown",
     "vulnerable": true
@@ -800,7 +802,9 @@
     "cname": ["ondigitalocean.app"],
     "discussion": "",
     "documentation": "https://docs.digitalocean.com/products/app-platform/how-to/manage-domains/",
-    "fingerprint": [],
+    "fingerprint": [
+      "We encountered an error when trying to load your application and your page could not be served"
+    ],
     "service": "Digital Ocean (App Platform)",
     "status": "Unknown",
     "vulnerable": true
