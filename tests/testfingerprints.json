@@ -549,7 +549,7 @@
     "http_status": null,
     "nxdomain": false,
     "service": "EasyRedir (CNAME)",
-    "status": "Vulnerable",
+    "status": "Not Vulnerable",
     "vulnerable": false
   },
   {
@@ -2056,7 +2056,30 @@
     "vulnerable": true
   },
   {
-    "cname": [".jotform.com"],
+    "cname": [
+      ".jform.co.kr",
+      ".jotfor.ms",
+      ".jotform.biz",
+      ".jotform.ca",
+      ".jotform.co",
+      ".jotform.com.tr",
+      ".jotform.com",
+      ".jotform.dev",
+      ".jotform.io",
+      ".jotform.me",
+      ".jotform.net",
+      ".jotform.ooo",
+      ".jotform.org",
+      ".jotform.pro",
+      ".jotform.us",
+      ".jotformers.com",
+      ".jotformeu.com",
+      ".jotformpro.com",
+      ".jotformz.com",
+      ".jotpoll.com",
+      ".jotservers.com",
+      ".myjotform.com"
+    ],
     "discussion": "",
     "documentation": "https://www.jotform.com/help/144-how-to-use-custom-domains-with-jotform-enterprise/",
     "fingerprint": [],
