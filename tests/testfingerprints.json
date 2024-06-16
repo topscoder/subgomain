@@ -550,7 +550,7 @@
     "nxdomain": false,
     "service": "EasyRedir (CNAME)",
     "status": "Vulnerable",
-    "vulnerable": true
+    "vulnerable": false
   },
   {
     "a": ["13.248.160.137", "76.223.24.124", "75.2.43.150", "99.83.186.106"],
