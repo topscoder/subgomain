@@ -1047,15 +1047,6 @@
   },
   {
     "false_positive": [],
-    "discussion": "https://github.com/EdOverflow/can-i-take-over-xyz/issues/14",
-    "documentation": "https://hackerone.com/reports/275714",
-    "fingerprint": "Unrecognized domain",
-    "service": "Mashery (Fingerprint)",
-    "status": "Vulnerable",
-    "vulnerable": true
-  },
-  {
-    "false_positive": [],
     "cname": ["mashery.com"],
     "discussion": "",
     "documentation": "https://docs.mashery.com/manage/GUID-47344B82-3DD8-47BF-83F6-D269C0FBC3EB.html",
@@ -1065,7 +1056,7 @@
       "Unrecognized domain"
     ],
     "http_status": 302,
-    "service": "Mashery (CNAME)",
+    "service": "Mashery",
     "status": "Vulnerable",
     "vulnerable": true
   },
