@@ -1050,7 +1050,8 @@
     "cname": ["mashery.com"],
     "discussion": [
       "https://github.com/EdOverflow/can-i-take-over-xyz/issues/14",
-      "https://hackerone.com/reports/275714"
+      "https://hackerone.com/reports/275714",
+      "Trial account after personal contact, and payment required."
     ],
     "documentation": "https://docs.mashery.com/manage/GUID-47344B82-3DD8-47BF-83F6-D269C0FBC3EB.html",
     "fingerprint": [
@@ -1060,8 +1061,9 @@
     ],
     "http_status": 302,
     "service": "Mashery",
-    "status": "Vulnerable",
-    "vulnerable": true
+    "status": "Edge Case",
+    "vulnerable": true,
+    "payment_required": true
   },
   {
     "false_positive": [],
