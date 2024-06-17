@@ -45,6 +45,12 @@ func CheckDNSAvailability(fqdn string) (bool, error) {
 		cnamePrefix = appName
 	}
 
+	// Member Don't start domain name with 'eba-'
+	if strings.HasPrefix(id, "eba-") || strings.HasPrefix(appName, "eba-") {
+		logger.LogDebug("[%s] Domain name cannot start with 'eba-' on AWS Elastic Beanstalk.\n", fqdn)
+		return false, nil
+	}
+
 	// Load the AWS configuration
 	cfg, err := config.LoadDefaultConfig(context.TODO(), config.WithRegion(region))
 	if err != nil {
