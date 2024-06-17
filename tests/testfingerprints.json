@@ -1693,7 +1693,7 @@
     "documentation": "https://docs.pantheon.io/guides/launch/configure-dns/",
     "fingerprint": [
       "The gods are wise, but do not know of the site which you seek.",
-      "Site is frozen",
+      "Unknown site",
       "The page could not be loaded properly"
     ],
     "http_status": null,
@@ -1710,7 +1710,7 @@
     "documentation": "Match on A/AAAA records. Find out if an additional fingerprint is needed.",
     "fingerprint": [
       "The gods are wise, but do not know of the site which you seek.",
-      "Site is frozen",
+      "Unknown site",
       "The page could not be loaded properly"
     ],
     "http_status": null,
