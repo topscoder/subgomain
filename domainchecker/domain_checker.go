@@ -114,6 +114,7 @@ func CheckDomain(domain string, fingerprints []fingerprints.Fingerprint, resolve
 		matchedCname := ""
 		matchFingerprint := ""
 		matchedARecord := ""
+		matchedService := ""
 
 		if len(fp.CNAME) > 0 {
 			// This fingerprint requires a matching CNAME indicator
@@ -123,6 +124,7 @@ func CheckDomain(domain string, fingerprints []fingerprints.Fingerprint, resolve
 					if cnameEntry != "" && strings.Contains(cname, cnameEntry) {
 						logger.LogDebug("[%s] [MATCH] - Matched CNAME record: %s", domain, cnameEntry)
 						matchedCname = cname
+						matchedService = fp.Service
 						break
 					}
 				}
@@ -167,6 +169,19 @@ func CheckDomain(domain string, fingerprints []fingerprints.Fingerprint, resolve
 			}
 
 			if matchFingerprint == "" {
+				continue
+			}
+		}
+
+		// Service validation
+		if matchedService == "AWS Elastic Beanstalk" {
+			available, err := CheckDNSAvailability(domain)
+			if err != nil {
+				logger.LogDebug("[%s] Error checking AWS DNS availability: %v", domain, err)
+				continue
+			}
+
+			if !available {
 				continue
 			}
 		}
