@@ -1376,7 +1376,8 @@
     "fingerprint": ["The content you are looking for seems to not exist."],
     "service": "Uptimerobot",
     "status": "Vulnerable",
-    "vulnerable": true
+    "vulnerable": true,
+    "payment_required": true
   },
   {
     "false_positive": [],
